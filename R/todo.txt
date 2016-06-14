@@ -1,0 +1,18 @@
+# TODO: 
+# figure out how to export in doxygen to get NAMESPACE right
+# see https://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
+
+# add methods to get other metadata from minids
+
+# why have metadata slot instead of slots for metadata elements?
+
+# if my package is called minid (and thus described in minid.R), and my
+# constructor is named minid, how do I document the constructor? - the string
+# "mind" is overloaded, even if I split out minid-package.r:
+
+# > ?minid
+# Using development documentation for minid
+# Error in f(...) : rdFile must be a single element character vector.
+# > ?minid()
+# Using development documentation for minid
+# Error in f(...) : rdFile must be a single element character vector.

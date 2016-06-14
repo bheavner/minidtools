@@ -1,0 +1,17 @@
+Package: minid
+Type: Package
+Title: minid: manipulate BDDS common identifiers
+Version: 0.99.01
+Date: 2016-04-11
+Author: Ben Heavner <Ben.Heavner@systemsbiology.org>
+Maintainer: Ben Heavner <Ben.Heavner@systemsbiology.org>
+Depends:
+    R (>= 3.2.3),
+    jsonlite,
+    httr
+Suggests:
+    RUnit
+Description: Access metadata, and the actual referenced data, beginning with a
+    BDDS minid
+License: MIT
+RoxygenNote: 5.0.1.9000
