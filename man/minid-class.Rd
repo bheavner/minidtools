@@ -15,4 +15,8 @@ An S4 class to represent a minid.
 
 \item{\code{metadata}}{a list of the metadata associated with the minid}
 }}
+\examples{
+getSlots("minid")
+
+}
 

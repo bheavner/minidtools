@@ -1,10 +1,15 @@
 #-------------------------------------------------------------------------------
 #' An S4 class to represent a minid.
 #'
+#' @name minid-class
+#' @rdname minid-class
 #' @slot id a character string containing the minid (e.g. ark:/99999/fk4mp58v5t)
 #' @slot metadata a list of the metadata associated with the minid
-#' @export
-
+#' @exportClass minid
+#' 
+#' @examples
+#' getSlots("minid")
+#' 
 .minid <- setClass ("minid",
                     slots = list(id="character", metadata="list")
                     )
@@ -28,7 +33,7 @@ printf <- function(...) print(noquote(sprintf(...)))
 minid <- function(id) {
   landing.page.prefix <- "http://minid.bd2k.org/minid/landingpage/"
   full.url <- paste(landing.page.prefix, id, sep="")
-  request.object  <- GET(full.url, add_headers(Accept="application/json"))
+  request.object  <- httr::GET(full.url, add_headers(Accept="application/json"))
   text.response <- httr::content(request.object, "text", encoding="UTF-8");
   stopifnot(jsonlite::validate(text.response))
   minid.JSON <- jsonlite::fromJSON(text.response)
