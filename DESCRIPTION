@@ -8,7 +8,8 @@ Maintainer: Ben Heavner <Ben.Heavner@systemsbiology.org>
 Depends:
     R (>= 3.2.3),
     jsonlite,
-    httr
+    httr,
+    methods
 Suggests:
     RUnit
 Description: Access metadata, and the actual referenced data, beginning with a
