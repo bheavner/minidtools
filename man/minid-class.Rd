@@ -4,7 +4,7 @@
 \name{minid-class}
 \alias{.minid}
 \alias{minid-class}
-\title{An S4 class to represent a minid.}
+\title{.minid}
 \description{
 An S4 class to represent a minid.
 }

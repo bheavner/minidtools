@@ -1,4 +1,17 @@
+#' minid
+#' 
+#' A package for working with BDDS minids.
+#' 
+#' The \pkg{minid} package curretly includes functions resolving a minid and accessing the
+#' associated metadata.
+#' 
+#' The \pkg{minid} package does not yet support minting new minids
+#' 
+"_PACKAGE"
+
 #-------------------------------------------------------------------------------
+#' .minid
+#' 
 #' An S4 class to represent a minid.
 #'
 #' @name minid-class
@@ -18,18 +31,17 @@
 printf <- function(...) print(noquote(sprintf(...)))
 
 #-------------------------------------------------------------------------------
+#' minid
+#' 
 #' The constructor function for making minid objects
 #' 
+#' @export
 #' @param id minid to resolve.
-#' 
 #' @return resolves the  an instance of the minid class
-#' 
 #' @examples
 #' demo.id <- "ark:/99999/fk4mp58v5t"
 #' demo.minid <- minid(demo.id)
-#' 
-#' @export
-#' 
+
 minid <- function(id) {
   landing.page.prefix <- "http://minid.bd2k.org/minid/landingpage/"
   full.url <- paste(landing.page.prefix, id, sep="")
