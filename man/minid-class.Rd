@@ -2,21 +2,30 @@
 % Please edit documentation in R/minid.R
 \docType{class}
 \name{minid-class}
-\alias{.minid}
+\alias{minid}
 \alias{minid-class}
-\title{.minid}
+\title{An S4 class for minids.}
 \description{
-An S4 class to represent a minid.
+An S4 class for minids.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{id}}{a character string containing the minid (e.g. ark:/99999/fk4mp58v5t)}
+\item{\code{identifier}}{the identifier (a character string, e.g. ark:/99999/fk4mp58v5t)}
 
-\item{\code{metadata}}{a list of the metadata associated with the minid}
+\item{\code{created}}{timestamp the identifier was minted (a character string, e.g. 2016-04-05 16:19:07.331338)}
+
+\item{\code{creator}}{the name and ORCid identifier of the minid creator (a character string, e.g. Jane Researcher (0000-0003-2898-9044))}
+
+\item{\code{checksum}}{the identifier checksum (a character string, e.g. TEST-49a38ef920d6e55714d43b065df75870c2d0853fc5bce405609fcf9ef38090d5)}
+
+\item{\code{status}}{the identifier's status. (optional, may be blank, ACTIVE, or TOMBSTONE)}
+
+\item{\code{locations}}{locations associated with the identifier (optional list)}
+
+\item{\code{titles}}{titles assocaited the identifier (optional list)}
 }}
 \examples{
 getSlots("minid")
-
 }
 

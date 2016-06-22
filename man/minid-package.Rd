@@ -4,14 +4,12 @@
 \name{minid-package}
 \alias{minid}
 \alias{minid-package}
-\title{minid}
+\title{A package for working with BDDS minids.}
 \description{
-A package for working with BDDS minids.
-}
-\details{
 The \pkg{minid} package curretly includes functions resolving a minid and accessing the
 associated metadata.
-
+}
+\details{
 The \pkg{minid} package does not yet support minting new minids
 }
 
