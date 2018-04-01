@@ -1,4 +1,4 @@
 library(testthat)
-library(minid)
+library(minidtools)
 
-test_check("minid")
+test_check("minidtools")
