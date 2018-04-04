@@ -39,11 +39,3 @@
 #' @docType package
 #' @name minidtools
 NULL
-
-# data documentation----------------------------
-#' Demo minid.
-#'
-#' A R object of class minid, useful for demos and testing.
-#'
-#' @format A minid, with filled slots.
-"demo2"

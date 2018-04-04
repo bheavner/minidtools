@@ -10,8 +10,10 @@ NULL
 #' @param object minid object
 #' 
 #' @examples
-#' data("demo2", package = "minidtools")
-#' show(demo2)
+#' \dontrun{
+#' show(minid_object)
+#' minid_object
+#' }
 #' 
 #' @import methods
 #' @export
@@ -24,7 +26,9 @@ setMethod("show", signature = "minid",
                 "  checksum_function = ", checksum_function(object), "\n",
                 "  status = ", status(object), "\n",
                 "  locations = ", unlist(locations(object)), "\n", # not sure
-                "  title = ", unlist(titles(object)), "\n", # not sure
+                "  title = ", unlist(titles(object)), "\n", # not sure - list
+                "  obsoleted_by = ", unlist(obsoleted_by(object)), "\n", # list
+                "  content_key = ", content_key(object), "\n",
                 sep = "")
           }
 )

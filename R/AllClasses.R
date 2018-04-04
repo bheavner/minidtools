@@ -19,20 +19,26 @@
 #' @slot titles A list of titles for the identified digital object (e.g.
 #'   "mdarcy - AGR Data set with identifier-based references to data in cloud 
 #'   storage"
+#' @slot obsoleted_by For minids that have "MOTHBALLED" status, a list of minids
+#'   superceding the mothballed minid
+#' @slot content_key a character string used for the hash of a bdbag
 #'   
 #' @section see also:
 #' \code{?\link{minid}}
+#' 
+#' @import methods
 #'
-#' @importFrom methods setClass
 #' @export
 setClass("minid",
          slots = c(
            identifier = "character",
+           checksum = "character",
+           titles = "list",
+           locations = "list",
+           status = "character",
+           obsoleted_by = "list",
+           content_key = "character",
            creator = "character",
            created = "character",
-           checksum = "character",
-           checksum_function = "character",
-           status = "character",
-           locations = "list",
-           titles = "list"
+           checksum_function = "character"
          ))

@@ -6,6 +6,8 @@
 \alias{status,minid-method}
 \title{status}
 \usage{
+status(x)
+
 \S4method{status}{minid}(x)
 }
 \arguments{
@@ -23,7 +25,7 @@ Get the minid status
 }}
 
 \examples{
-data("demo2", package = "minidtools")
-status(demo2)
+data("demo", package = "minidtools")
+status(demo)
 
 }
