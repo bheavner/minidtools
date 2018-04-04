@@ -7,7 +7,7 @@ test_that("identifier(minid) returns the expected string", {
 
 test_that("creator(minid) returns the expected string", {
   load("demo.rda")
-  expect_identical(creator(demo), "mdarcy (0000-0003-2280-917X)")
+  expect_identical(creator(demo), "mdarcy (<id string>)")
   })
 
 test_that("created(minid) returns the expected string", {
