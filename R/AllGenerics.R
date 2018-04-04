@@ -77,6 +77,25 @@ methods::setGeneric("created", function(x) standardGeneric("created"))
 #' @export
 methods::setGeneric("checksum", function(x) standardGeneric("checksum"))
 
+#' checksum_function
+#' 
+#' Get the minid checksum hashing function
+#'
+#' @param x minid object
+#' 
+#' @return The minid checksum_function (as character string)
+#' 
+#' @examples
+#' data("demo", package = "minidtools")
+#' checksum_function(demo)
+#' 
+#' @name checksum_function
+#' @rdname checksum_function
+#'
+#' @export
+methods::setGeneric("checksum_function", 
+                    function(x) standardGeneric("checksum_function"))
+
 #' status
 #' 
 #' Get the minid status

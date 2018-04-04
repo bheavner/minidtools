@@ -20,6 +20,10 @@ setMethod("created", "minid", function(x) x@created)
 #' @importFrom methods setMethod
 setMethod("checksum", "minid", function(x) x@checksum)
 
+#' @describeIn checksum_function getter method for the checksum_function slot
+#' @importFrom methods setMethod
+setMethod("checksum_function", "minid", function(x) x@checksum_function)
+
 #' @describeIn status getter method for the status slot
 #' @importFrom methods setMethod
 setMethod("status", "minid", function(x) x@status)

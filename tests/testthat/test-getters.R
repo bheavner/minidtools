@@ -22,6 +22,11 @@ test_that("checksum(minid) returns the expected string", {
   expect_identical(checksum(demo), checksum)
 })
 
+test_that("checksum_function(minid) returns the expected string", {
+  data("demo", package = "minidtools")
+  expect_identical(checksum_function(demo), "SHA")
+})
+
 test_that("status(minid) returns the expected string", {
   data("demo", package = "minidtools")
   expect_identical(status(demo), "ACTIVE")
