@@ -10,3 +10,13 @@ LazyData: true
 RoxygenNote: 6.0.1
 Suggests: testthat,
     covr
+Imports: methods
+Collate: 
+    'AllClasses.R'
+    'AllGenerics.R'
+    'coercion-methods.R'
+    'getter-methods.R'
+    'minidtools.R'
+    'setter-methods.R'
+    'show-methods.R'
+    'validity-methods.R'
