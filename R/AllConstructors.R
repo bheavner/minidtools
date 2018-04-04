@@ -33,7 +33,7 @@ NULL
 #' @return an instance of the minid class
 #' 
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' test_minid <- minid(
 #'  identifier = "ark:/57799/b9j69h",
 #'  creator = "mdarcy (0000-0003-2280-917X)",

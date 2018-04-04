@@ -6,7 +6,7 @@
 #' @slot identifier a character string containing the minid 
 #'   (e.g. ark:/99999/fk4mp58v5t)
 #' @slot creator a character string giving the name (and, optionally, ORCID) of
-#'   the person who registered the minid (e.g. "mdarcy (0000-0003-2280-917X)")
+#'   the person who registered the minid (e.g. "mdarcy (<id string>)")
 #' @slot created a character string giving the date and time the minid was 
 #'   created (e.g. "Mon, 19 Mar 2018 17:43:57 GMT")
 #' @slot checksum the checksum of the identified digital object (e.g. 

@@ -14,7 +14,9 @@
 show method for minid object
 }
 \examples{
-data("demo2", package = "minidtools")
-show(demo2)
+\dontrun{
+show(minid_object)
+minid_object
+}
 
 }

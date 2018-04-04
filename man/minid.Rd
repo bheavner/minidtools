@@ -50,6 +50,7 @@ an instance of the minid class
 Create an instance of the minid class
 }
 \examples{
+\dontrun{
 test_minid <- minid(
  identifier = "ark:/57799/b9j69h",
  creator = "mdarcy (0000-0003-2280-917X)",
@@ -65,5 +66,6 @@ test_minid <- minid(
  obsoleted_by = list(NULL),
  content_key = as.character(NULL)
 )
+}
 
 }
