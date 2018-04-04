@@ -41,7 +41,7 @@ The minid minting functions ...
 
 \section{see also}{
 
-\code{?`\linkS4class{minid-class}`}
+\code{?`\linkS4class{minid}`}
 }
 
 \references{

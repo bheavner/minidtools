@@ -93,7 +93,7 @@ methods::setGeneric("checksum", function(x) standardGeneric("checksum"))
 #' @rdname checksum_function
 #'
 #' @export
-methods::setGeneric("checksum_function", 
+methods::setGeneric("checksum_function",
                     function(x) standardGeneric("checksum_function"))
 
 #' status

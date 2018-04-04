@@ -32,7 +32,7 @@
 #' The minid minting functions ...
 #' 
 #' @section see also:
-#' \code{?`\linkS4class{minid-class}`}
+#' \code{?`\linkS4class{minid}`}
 #' 
 #' @references \url{http://minid.bd2k.org/}
 #'
@@ -45,5 +45,5 @@ NULL
 #'
 #' A R object of class minid, useful for demos and testing.
 #'
-#' @format A minid, with filled slots:
-"demo"
+#' @format A minid, with filled slots.
+"demo2"
