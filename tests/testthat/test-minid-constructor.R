@@ -11,8 +11,8 @@ test_that("minid() makes an object with class minid", {
     status = "ACTIVE",
     locations = list(
       "mdarcy - https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz"),
-    titles = list(paste0("mdarcy - AGR Data set with identifier-based references to",
-                   "data in cloud storage"))
+    titles = list(paste0("mdarcy - AGR Data set with identifier-based ",
+                         "references to data in cloud storage"))
   )
   expect_identical(is(test_minid), "minid")
 })

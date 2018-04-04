@@ -29,21 +29,3 @@ NULL
 #'
 #' @format A minid, with filled slots:
 "demo"
-
-
-# helpful utility functions --------------------
-#' Get path to load minidtools examples
-#'
-#' \pkg{minidtools} comes bundled with sample files in its \code{inst/extdata}
-#' diretory. This function makes them easier to access. Based on
-#' \code{readr::readr_example()}
-#'
-#' @param filename Name of file
-#'
-#' @examples
-#' minid_example(filename = "demo.rda")
-#'
-#' @export
-minid_example <- function(filename) {
-  system.file("data", filename, package = "minidtools", mustWork = TRUE)
-}

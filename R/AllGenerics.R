@@ -7,7 +7,7 @@ NULL
 #' @param x minid object
 #' 
 #' @examples
-#' load(minid_example(filename = "demo.rda"))
+#' data("demo", package = "minidtools")
 #' identifier(demo)
 #' 
 #' @import methods
@@ -19,7 +19,7 @@ setGeneric("identifier", function(x) standardGeneric("identifier"))
 #' @param x minid object
 #' 
 #' @examples
-#' load(minid_example(filename = "demo.rda"))
+#' data("demo", package = "minidtools")
 #' creator(demo)
 #' 
 #' @import methods
@@ -31,7 +31,7 @@ setGeneric("creator", function(x) standardGeneric("creator"))
 #' @param x minid object
 #' 
 #' @examples
-#' load(minid_example(filename = "demo.rda"))
+#' data("demo", package = "minidtools")
 #' created(demo)
 #' 
 #' @import methods
@@ -43,7 +43,7 @@ setGeneric("created", function(x) standardGeneric("created"))
 #' @param x minid object
 #' 
 #' @examples
-#' load(minid_example(filename = "demo.rda"))
+#' data("demo", package = "minidtools")
 #' checksum(demo)
 #' 
 #' @import methods
@@ -55,7 +55,7 @@ setGeneric("checksum", function(x) standardGeneric("checksum"))
 #' @param x minid object
 #' 
 #' @examples
-#' load(minid_example(filename = "demo.rda"))
+#' data("demo", package = "minidtools")
 #' status(demo)
 #' 
 #' @import methods
@@ -67,7 +67,7 @@ setGeneric("status", function(x) standardGeneric("status"))
 #' @param x minid object
 #' 
 #' @examples
-#' load(minid_example(filename = "demo.rda"))
+#' data("demo", package = "minidtools")
 #' locations(demo)
 #' 
 #' @import methods
@@ -79,7 +79,7 @@ setGeneric("locations", function(x) standardGeneric("locations"))
 #' @param x minid object
 #' 
 #' @examples
-#' load(minid_example(filename = "demo.rda"))
+#' data("demo", package = "minidtools")
 #' titles(demo)
 #' 
 #' @import methods

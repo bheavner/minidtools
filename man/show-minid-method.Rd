@@ -14,7 +14,7 @@
 show method for minid object
 }
 \examples{
-load(minid_example(filename = "demo.rda"))
+data("demo", package = "minidtools")
 show(demo)
 
 }

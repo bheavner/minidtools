@@ -22,7 +22,7 @@ Get the minid created date
 }}
 
 \examples{
-load(minid_example(filename = "demo.rda"))
+data("demo", package = "minidtools")
 created(demo)
 
 }

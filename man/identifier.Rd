@@ -22,7 +22,7 @@ Get the minid identifier
 }}
 
 \examples{
-load(minid_example(filename = "demo.rda"))
+data("demo", package = "minidtools")
 identifier(demo)
 
 }

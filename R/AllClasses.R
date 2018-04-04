@@ -56,7 +56,7 @@ setClass("minid",
 #' @return resolves the  an instance of the minid class
 #' 
 #' @examples
-#' test_minid <-minid(
+#' test_minid <- minid(
 #'  identifier = "ark:/57799/b9j69h",
 #'  creator = "mdarcy (0000-0003-2280-917X)",
 #'  created = "Mon, 19 Mar 2018 17:43:57 GMT",
