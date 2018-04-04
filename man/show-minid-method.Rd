@@ -14,7 +14,7 @@
 show method for minid object
 }
 \examples{
-data("demo", package = "minidtools")
-show(demo)
+data("demo2", package = "minidtools")
+show(demo2)
 
 }

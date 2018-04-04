@@ -23,7 +23,7 @@ Get the minid checksum hashing function
 }}
 
 \examples{
-data("demo", package = "minidtools")
-checksum_function(demo)
+data("demo2", package = "minidtools")
+checksum_function(demo2)
 
 }

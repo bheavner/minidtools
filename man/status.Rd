@@ -23,7 +23,7 @@ Get the minid status
 }}
 
 \examples{
-data("demo", package = "minidtools")
-status(demo)
+data("demo2", package = "minidtools")
+status(demo2)
 
 }

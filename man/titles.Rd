@@ -23,7 +23,7 @@ Get the minid titles
 }}
 
 \examples{
-data("demo", package = "minidtools")
-titles(demo)
+data("demo2", package = "minidtools")
+titles(demo2)
 
 }

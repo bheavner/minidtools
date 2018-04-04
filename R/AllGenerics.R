@@ -16,8 +16,8 @@ NULL
 #' @return The minid identifier string
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' identifier(demo)
+#' data("demo2", package = "minidtools")
+#' identifier(demo2)
 #' 
 #' @export
 methods::setGeneric("identifier", function(x) standardGeneric("identifier"))
@@ -32,8 +32,8 @@ methods::setGeneric("identifier", function(x) standardGeneric("identifier"))
 #' @return The minid creator string
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' creator(demo)
+#' data("demo2", package = "minidtools")
+#' creator(demo2)
 #' 
 #' @name creator
 #' @rdname creator
@@ -50,8 +50,8 @@ methods::setGeneric("creator", function(x) standardGeneric("creator"))
 #' @return The date the minid was created (as character string)
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' created(demo)
+#' data("demo2", package = "minidtools")
+#' created(demo2)
 #' 
 #' @name created
 #' @rdname created
@@ -68,8 +68,8 @@ methods::setGeneric("created", function(x) standardGeneric("created"))
 #' @return The minid checksum (as character string)
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' checksum(demo)
+#' data("demo2", package = "minidtools")
+#' checksum(demo2)
 #' 
 #' @name checksum
 #' @rdname checksum
@@ -86,8 +86,8 @@ methods::setGeneric("checksum", function(x) standardGeneric("checksum"))
 #' @return The minid checksum_function (as character string)
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' checksum_function(demo)
+#' data("demo2", package = "minidtools")
+#' checksum_function(demo2)
 #' 
 #' @name checksum_function
 #' @rdname checksum_function
@@ -105,8 +105,8 @@ methods::setGeneric("checksum_function",
 #' @return The minid status (as character string)
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' status(demo)
+#' data("demo2", package = "minidtools")
+#' status(demo2)
 #' 
 #' @name status
 #' @rdname status
@@ -123,8 +123,8 @@ methods::setGeneric("status", function(x) standardGeneric("status"))
 #' @return The minid locations (as list)
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' locations(demo)
+#' data("demo2", package = "minidtools")
+#' locations(demo2)
 #' 
 #' @name locations
 #' @rdname locations
@@ -141,8 +141,8 @@ methods::setGeneric("locations", function(x) standardGeneric("locations"))
 #' @return The minid titles (as list)
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' titles(demo)
+#' data("demo2", package = "minidtools")
+#' titles(demo2)
 #' 
 #' @name titles
 #' @rdname titles

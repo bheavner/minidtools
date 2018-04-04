@@ -23,7 +23,7 @@ Get the minid locations
 }}
 
 \examples{
-data("demo", package = "minidtools")
-locations(demo)
+data("demo2", package = "minidtools")
+locations(demo2)
 
 }

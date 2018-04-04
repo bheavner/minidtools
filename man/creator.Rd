@@ -23,7 +23,7 @@ Get the minid creator
 }}
 
 \examples{
-data("demo", package = "minidtools")
-creator(demo)
+data("demo2", package = "minidtools")
+creator(demo2)
 
 }

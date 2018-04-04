@@ -23,7 +23,7 @@ Get the minid created date
 }}
 
 \examples{
-data("demo", package = "minidtools")
-created(demo)
+data("demo2", package = "minidtools")
+created(demo2)
 
 }

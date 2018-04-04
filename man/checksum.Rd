@@ -23,7 +23,7 @@ Get the minid checksum
 }}
 
 \examples{
-data("demo", package = "minidtools")
-checksum(demo)
+data("demo2", package = "minidtools")
+checksum(demo2)
 
 }
