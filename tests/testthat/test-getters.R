@@ -17,7 +17,7 @@ test_that("created(minid) returns the expected string", {
 
 test_that("checksum(minid) returns the expected string", {
   load("demo.rda")
-  checksum = paste0("6484968f81afac84857d02b573b0d589fb2f9582a2b920572830dc",
+  checksum <- paste0("6484968f81afac84857d02b573b0d589fb2f9582a2b920572830dc",
                     "5781e0a53c")
   expect_identical(checksum(demo), checksum)
 })
@@ -34,7 +34,7 @@ test_that("status(minid) returns the expected string", {
 
 test_that("locations(minid) returns the expected string", {
   load("demo.rda")
-  locations = list(
+  locations <- list(
     "mdarcy - https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz")
   expect_identical(locations(demo), locations)
 })

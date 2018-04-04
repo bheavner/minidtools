@@ -53,7 +53,7 @@ NULL
 #' 
 #' @import methods
 #' @export
-minid <- 
+minid <-
   function(identifier = NULL, creator = NULL, created = NULL, checksum,
            checksum_function, status = NULL, locations = NULL, titles,
            obsoleted_by = list(NULL), content_key = as.character(NULL)) {
