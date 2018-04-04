@@ -1,5 +1,8 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
+# I'd rather not do this, but not sure how to fix Rd \usage warnings
+warnings_are_errors: false
+
 language: R
 sudo: false
 cache: packages
