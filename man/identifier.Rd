@@ -4,7 +4,7 @@
 \name{identifier}
 \alias{identifier}
 \alias{identifier,minid-method}
-\title{Get the minid identifier}
+\title{identifier}
 \usage{
 identifier(x)
 
@@ -12,6 +12,9 @@ identifier(x)
 }
 \arguments{
 \item{x}{minid object}
+}
+\value{
+The minid identifier string
 }
 \description{
 Get the minid identifier

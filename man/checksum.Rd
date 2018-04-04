@@ -4,14 +4,15 @@
 \name{checksum}
 \alias{checksum}
 \alias{checksum,minid-method}
-\title{Get the minid checksum}
+\title{checksum}
 \usage{
-checksum(x)
-
 \S4method{checksum}{minid}(x)
 }
 \arguments{
 \item{x}{minid object}
+}
+\value{
+The minid checksum (as character string)
 }
 \description{
 Get the minid checksum

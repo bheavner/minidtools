@@ -14,6 +14,7 @@ Imports: methods
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
+    'AllConstructors.R'
     'coercion-methods.R'
     'getter-methods.R'
     'minidtools.R'

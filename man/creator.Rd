@@ -4,14 +4,15 @@
 \name{creator}
 \alias{creator}
 \alias{creator,minid-method}
-\title{Get the minid creator}
+\title{creator}
 \usage{
-creator(x)
-
 \S4method{creator}{minid}(x)
 }
 \arguments{
 \item{x}{minid object}
+}
+\value{
+The minid creator string
 }
 \description{
 Get the minid creator

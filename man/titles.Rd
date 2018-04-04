@@ -4,14 +4,15 @@
 \name{titles}
 \alias{titles}
 \alias{titles,minid-method}
-\title{Get the minid titles}
+\title{titles}
 \usage{
-titles(x)
-
 \S4method{titles}{minid}(x)
 }
 \arguments{
 \item{x}{minid object}
+}
+\value{
+The minid titles (as list)
 }
 \description{
 Get the minid titles

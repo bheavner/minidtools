@@ -4,14 +4,15 @@
 \name{created}
 \alias{created}
 \alias{created,minid-method}
-\title{Get the minid created date}
+\title{created}
 \usage{
-created(x)
-
 \S4method{created}{minid}(x)
 }
 \arguments{
 \item{x}{minid object}
+}
+\value{
+The date the minid was created (as character string)
 }
 \description{
 Get the minid created date

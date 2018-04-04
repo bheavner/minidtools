@@ -4,14 +4,15 @@
 \name{locations}
 \alias{locations}
 \alias{locations,minid-method}
-\title{Get the minid locations}
+\title{locations}
 \usage{
-locations(x)
-
 \S4method{locations}{minid}(x)
 }
 \arguments{
 \item{x}{minid object}
+}
+\value{
+The minid locations (as list)
 }
 \description{
 Get the minid locations

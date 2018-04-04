@@ -3,7 +3,7 @@
 \docType{class}
 \name{minid-class}
 \alias{minid-class}
-\title{An S4 class to represent a minid.}
+\title{minid-class}
 \description{
 An S4 class to represent a minid.
 }
@@ -34,4 +34,9 @@ created (e.g. "Mon, 19 Mar 2018 17:43:57 GMT")}
 "mdarcy - AGR Data set with identifier-based references to data in cloud 
 storage"}
 }}
+
+\section{see also}{
+
+\code{?\link{minid}}
+}
 

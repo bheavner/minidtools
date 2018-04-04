@@ -2,86 +2,131 @@
 NULL
 
 # slot getters ------------------------
+#' identifier
+#' 
 #' Get the minid identifier
 #'
+#' @name identifier
+#' @rdname identifier
+#' 
 #' @param x minid object
+#' 
+#' @usage identifier(x)
+#' 
+#' @return The minid identifier string
 #' 
 #' @examples
 #' data("demo", package = "minidtools")
 #' identifier(demo)
 #' 
-#' @import methods
 #' @export
-setGeneric("identifier", function(x) standardGeneric("identifier"))
+methods::setGeneric("identifier", function(x) standardGeneric("identifier"))
 
+
+#' creator
+#' 
 #' Get the minid creator
 #'
 #' @param x minid object
+#' 
+#' @return The minid creator string
 #' 
 #' @examples
 #' data("demo", package = "minidtools")
 #' creator(demo)
 #' 
-#' @import methods
+#' @name creator
+#' @rdname creator
+#' 
 #' @export
-setGeneric("creator", function(x) standardGeneric("creator"))
+methods::setGeneric("creator", function(x) standardGeneric("creator"))
 
+#' created
+#' 
 #' Get the minid created date
 #'
 #' @param x minid object
+#' 
+#' @return The date the minid was created (as character string)
 #' 
 #' @examples
 #' data("demo", package = "minidtools")
 #' created(demo)
 #' 
-#' @import methods
+#' @name created
+#' @rdname created
+#' 
 #' @export
-setGeneric("created", function(x) standardGeneric("created"))
+methods::setGeneric("created", function(x) standardGeneric("created"))
 
+#' checksum
+#' 
 #' Get the minid checksum
 #'
 #' @param x minid object
+#' 
+#' @return The minid checksum (as character string)
 #' 
 #' @examples
 #' data("demo", package = "minidtools")
 #' checksum(demo)
 #' 
-#' @import methods
+#' @name checksum
+#' @rdname checksum
+#'
 #' @export
-setGeneric("checksum", function(x) standardGeneric("checksum"))
+methods::setGeneric("checksum", function(x) standardGeneric("checksum"))
 
+#' status
+#' 
 #' Get the minid status
 #'
 #' @param x minid object
+#' 
+#' @return The minid status (as character string)
 #' 
 #' @examples
 #' data("demo", package = "minidtools")
 #' status(demo)
 #' 
-#' @import methods
+#' @name status
+#' @rdname status
+#' 
 #' @export
-setGeneric("status", function(x) standardGeneric("status"))
+methods::setGeneric("status", function(x) standardGeneric("status"))
 
+#' locations
+#' 
 #' Get the minid locations
 #'
 #' @param x minid object
+#' 
+#' @return The minid locations (as list)
 #' 
 #' @examples
 #' data("demo", package = "minidtools")
 #' locations(demo)
 #' 
-#' @import methods
+#' @name locations
+#' @rdname locations
+#' 
 #' @export
-setGeneric("locations", function(x) standardGeneric("locations"))
+methods::setGeneric("locations", function(x) standardGeneric("locations"))
 
+#' titles
+#' 
 #' Get the minid titles
 #'
 #' @param x minid object
+#' 
+#' @return The minid titles (as list)
 #' 
 #' @examples
 #' data("demo", package = "minidtools")
 #' titles(demo)
 #' 
-#' @import methods
+#' @name titles
+#' @rdname titles
+#' 
 #' @export
-setGeneric("titles", function(x) standardGeneric("titles"))
+methods::setGeneric("titles", function(x) standardGeneric("titles"))

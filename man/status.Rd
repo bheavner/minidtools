@@ -4,14 +4,15 @@
 \name{status}
 \alias{status}
 \alias{status,minid-method}
-\title{Get the minid status}
+\title{status}
 \usage{
-status(x)
-
 \S4method{status}{minid}(x)
 }
 \arguments{
 \item{x}{minid object}
+}
+\value{
+The minid status (as character string)
 }
 \description{
 Get the minid status
