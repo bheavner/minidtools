@@ -6,6 +6,8 @@
 \alias{titles,minid-method}
 \title{titles}
 \usage{
+titles(x)
+
 \S4method{titles}{minid}(x)
 }
 \arguments{
@@ -23,7 +25,7 @@ Get the minid titles
 }}
 
 \examples{
-data("demo2", package = "minidtools")
-titles(demo2)
+data("demo", package = "minidtools")
+titles(demo)
 
 }

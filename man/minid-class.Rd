@@ -33,6 +33,11 @@ created (e.g. "Mon, 19 Mar 2018 17:43:57 GMT")}
 \item{\code{titles}}{A list of titles for the identified digital object (e.g.
 "mdarcy - AGR Data set with identifier-based references to data in cloud 
 storage"}
+
+\item{\code{obsoleted_by}}{For minids that have "MOTHBALLED" status, a list of minids
+superceding the mothballed minid}
+
+\item{\code{content_key}}{a character string used for the hash of a bdbag}
 }}
 
 \section{see also}{

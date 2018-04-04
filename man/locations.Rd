@@ -6,6 +6,8 @@
 \alias{locations,minid-method}
 \title{locations}
 \usage{
+locations(x)
+
 \S4method{locations}{minid}(x)
 }
 \arguments{
@@ -23,7 +25,7 @@ Get the minid locations
 }}
 
 \examples{
-data("demo2", package = "minidtools")
-locations(demo2)
+data("demo", package = "minidtools")
+locations(demo)
 
 }

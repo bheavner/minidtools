@@ -25,7 +25,7 @@ Get the minid identifier
 }}
 
 \examples{
-data("demo2", package = "minidtools")
-identifier(demo2)
+data("demo", package = "minidtools")
+identifier(demo)
 
 }

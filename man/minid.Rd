@@ -4,8 +4,9 @@
 \alias{minid}
 \title{Create an instance of the minid class}
 \usage{
-minid(identifier, creator, created, checksum, checksum_function, status,
-  locations, titles)
+minid(identifier = NULL, creator = NULL, created = NULL, checksum,
+  checksum_function, status = NULL, locations = NULL, titles,
+  obsoleted_by = NULL, content_key = NULL)
 }
 \arguments{
 \item{identifier}{a character string containing the minid 
@@ -13,7 +14,7 @@ minid(identifier, creator, created, checksum, checksum_function, status,
 
 \item{creator}{a character string giving the name (and and optionally, ORCID)
 of the person who registered the minid (e.g. "mdarcy 
-(0000-0003-2280-917X)")}
+(0000-0003-2280-917X)"). Note: may be NULL}
 
 \item{created}{a character string giving the date and time the minid was 
 created (e.g. "Mon, 19 Mar 2018 17:43:57 GMT") Note: may be NULL}
@@ -24,14 +25,23 @@ created (e.g. "Mon, 19 Mar 2018 17:43:57 GMT") Note: may be NULL}
 \item{checksum_function}{the hashing function used to calculate the checksum 
 (e.g. "SHA")}
 
-\item{status}{The minid status (e.g. "ACTIVE" or "MOTHBALLED")}
+\item{status}{The minid status (e.g. "ACTIVE" or "MOTHBALLED"). Note: may be
+NULL}
 
-\item{locations}{A list of locations hostingthe identified digital object 
-(e.g. "mdarcy - https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz")}
+\item{locations}{A list of locations hostingthe identified digital object. 
+(e.g. "mdarcy - 
+https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz"). Note: may be
+NULL}
 
 \item{titles}{A list of titles for the identified digital object (e.g.
 "mdarcy - AGR Data set with identifier-based references to data in cloud 
 storage"}
+
+\item{obsoleted_by}{For minids that have "MOTHBALLED" status, a list of
+minids superceding the mothballed minid. Note: may be NULL}
+
+\item{content_key}{a character string, used for the hash of a bdbag. Note:
+may be NULL}
 }
 \value{
 an instance of the minid class
@@ -51,7 +61,9 @@ test_minid <- minid(
  locations = list(
    "https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz"),
  titles = list(paste0("AGR Data set with identifier-based references to",
-                      "data in cloud storage"))
+                      "data in cloud storage")),
+ obsoleted_by = NULL,
+ content_key = NULL
 )
 
 }

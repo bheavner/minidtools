@@ -40,10 +40,31 @@
 #' @name minidtools
 NULL
 
+# make minid example for documentation------------
+#' @noRd
+.make_demo <- function(){
+  demo <- minid(
+    identifier = "ark:/57799/b9j69h",
+    creator = "mdarcy (0000-0003-2280-917X)",
+    created = "Mon, 19 Mar 2018 17:43:57 GMT",
+    checksum = paste0("6484968f81afac84857d02b573b0d589fb2f9582a2b920572830dc",
+                      "5781e0a53c"),
+    checksum_function = "SHA",
+    status = "ACTIVE",
+    locations = list(
+      "https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz"),
+    titles = list(paste0("AGR Data set with identifier-based references to",
+                         "data in cloud storage")),
+    obsoleted_by = NULL,
+    content_key = NULL
+  )
+  devtools::use_data(demo, overwrite = TRUE)
+}
+
 # data documentation----------------------------
 #' Demo minid.
 #'
 #' A R object of class minid, useful for demos and testing.
 #'
 #' @format A minid, with filled slots.
-"demo2"
+"demo"

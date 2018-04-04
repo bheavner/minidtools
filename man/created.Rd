@@ -6,6 +6,8 @@
 \alias{created,minid-method}
 \title{created}
 \usage{
+created(x)
+
 \S4method{created}{minid}(x)
 }
 \arguments{
@@ -23,7 +25,7 @@ Get the minid created date
 }}
 
 \examples{
-data("demo2", package = "minidtools")
-created(demo2)
+data("demo", package = "minidtools")
+created(demo)
 
 }

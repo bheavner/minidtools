@@ -6,6 +6,8 @@
 \alias{checksum_function,minid-method}
 \title{checksum_function}
 \usage{
+checksum_function(x)
+
 \S4method{checksum_function}{minid}(x)
 }
 \arguments{
@@ -23,7 +25,7 @@ Get the minid checksum hashing function
 }}
 
 \examples{
-data("demo2", package = "minidtools")
-checksum_function(demo2)
+data("demo", package = "minidtools")
+checksum_function(demo)
 
 }
