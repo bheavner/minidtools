@@ -33,6 +33,7 @@ NULL
 #' @return an instance of the minid class
 #' 
 #' @examples
+#' #' \dontrun{
 #' test_minid <- minid(
 #'  identifier = "ark:/57799/b9j69h",
 #'  creator = "mdarcy (0000-0003-2280-917X)",
@@ -45,16 +46,17 @@ NULL
 #'    "https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz"),
 #'  titles = list(paste0("AGR Data set with identifier-based references to",
 #'                       "data in cloud storage")),
-#'  obsoleted_by = NULL,
-#'  content_key = NULL
+#'  obsoleted_by = list(NULL),
+#'  content_key = as.character(NULL)
 #' )
+#' }
 #' 
 #' @import methods
 #' @export
 minid <- 
   function(identifier = NULL, creator = NULL, created = NULL, checksum,
            checksum_function, status = NULL, locations = NULL, titles,
-           obsoleted_by = NULL, content_key = NULL) {
+           obsoleted_by = list(NULL), content_key = as.character(NULL)) {
     new("minid",
         identifier = identifier,
         creator = creator,
@@ -63,5 +65,7 @@ minid <-
         checksum_function = checksum_function,
         status = status,
         locations = locations,
-        titles = titles)
+        titles = titles,
+        obsoleted_by = obsoleted_by,
+        content_key = content_key)
   }

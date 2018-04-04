@@ -6,7 +6,7 @@
 \usage{
 minid(identifier = NULL, creator = NULL, created = NULL, checksum,
   checksum_function, status = NULL, locations = NULL, titles,
-  obsoleted_by = NULL, content_key = NULL)
+  obsoleted_by = list(NULL), content_key = as.character(NULL))
 }
 \arguments{
 \item{identifier}{a character string containing the minid 
@@ -62,8 +62,8 @@ test_minid <- minid(
    "https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz"),
  titles = list(paste0("AGR Data set with identifier-based references to",
                       "data in cloud storage")),
- obsoleted_by = NULL,
- content_key = NULL
+ obsoleted_by = list(NULL),
+ content_key = as.character(NULL)
 )
 
 }

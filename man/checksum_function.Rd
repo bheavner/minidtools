@@ -17,7 +17,7 @@ checksum_function(x)
 The minid checksum_function (as character string)
 }
 \description{
-Get the minid checksum hashing function
+Get the hashing function used to make the minid checksum
 }
 \section{Methods (by class)}{
 \itemize{

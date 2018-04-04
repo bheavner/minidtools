@@ -13,8 +13,9 @@ NULL
 #' @return The minid identifier string
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' identifier(demo)
+#' #' \dontrun{
+#' identifier(minid_object)
+#' }
 #' 
 #' @import methods
 #' @export
@@ -30,8 +31,9 @@ setGeneric("identifier", function(x) standardGeneric("identifier"))
 #' @return The minid creator string
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' creator(demo)
+#' \dontrun{
+#' creator(minid_object)
+#' }
 #' 
 #' @import methods
 #' @export
@@ -46,8 +48,9 @@ setGeneric("creator", function(x) standardGeneric("creator"))
 #' @return The date the minid was created (as character string)
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' created(demo)
+#' #' \dontrun{
+#' created(minid_object)
+#' }
 #' 
 #' @import methods
 #' @export
@@ -62,8 +65,9 @@ setGeneric("created", function(x) standardGeneric("created"))
 #' @return The minid checksum (as character string)
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' checksum(demo)
+#' \dontrun{
+#' checksum(minid_object)
+#' }
 #'
 #' @import methods
 #' @export
@@ -71,15 +75,16 @@ setGeneric("checksum", function(x) standardGeneric("checksum"))
 
 #' checksum_function
 #' 
-#' Get the minid checksum hashing function
+#' Get the hashing function used to make the minid checksum 
 #'
 #' @param x minid object
 #' 
 #' @return The minid checksum_function (as character string)
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' checksum_function(demo)
+#' \dontrun{
+#' checksum_function(minid_object)
+#' }
 #'
 #' @import methods
 #' @export
@@ -95,8 +100,9 @@ setGeneric("checksum_function",
 #' @return The minid status (as character string)
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' status(demo)
+#' \dontrun{
+#' status(minid_object)
+#' }
 #' 
 #' @import methods
 #' @export
@@ -111,8 +117,9 @@ setGeneric("status", function(x) standardGeneric("status"))
 #' @return The minid locations (as list)
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' locations(demo)
+#' \dontrun{
+#' locations(minid_object)
+#' }
 #' 
 #' @import methods
 #' @export
@@ -127,8 +134,9 @@ setGeneric("locations", function(x) standardGeneric("locations"))
 #' @return The minid titles (as list)
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' titles(demo)
+#' \dontrun{
+#' titles(minid_object)
+#' }
 #' 
 #' @import methods
 #' @export
@@ -143,8 +151,9 @@ setGeneric("titles", function(x) standardGeneric("titles"))
 #' @return The minid obsoleted_by slot (as list)
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' titles(demo)
+#' \dontrun{
+#' obsoleted_by(minid_object)
+#' }
 #' 
 #' @import methods
 #' @export
@@ -159,8 +168,9 @@ setGeneric("obsoleted_by", function(x) standardGeneric("obsoleted_by"))
 #' @return The minid content_key slot
 #' 
 #' @examples
-#' data("demo", package = "minidtools")
-#' titles(demo)
+#' \dontrun{
+#' content_key(minid_object)
+#' }
 #' 
 #' @import methods
 #' @export
