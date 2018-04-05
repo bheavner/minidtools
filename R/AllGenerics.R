@@ -365,3 +365,23 @@ setGeneric("obsoleted_by<-",
 #' @export
 setGeneric("content_key<-",
            function(x, value) standardGeneric("content_key<-"))
+
+# resolve minid  ------------------------
+#' lookup
+#'
+#' Get a minid by identifier
+#'
+#' @param x minid idenentifier (e.g. ark:/57799/b9j69h)
+#'
+#' @usage lookup(x)
+#'
+#' @return A minid object with filled slots
+#'
+#' @examples
+#' \dontrun{
+#' my_minid <- lookup("ark:/57799/b9j69h")
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("lookup", function(x) standardGeneric("lookup"))

@@ -10,13 +10,16 @@ LazyData: true
 RoxygenNote: 6.0.1
 Suggests: testthat,
     covr
-Imports: methods
+Imports: httr,
+    jsonlite,
+    methods
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
     'AllConstructors.R'
     'coercion-methods.R'
     'minid-getter-methods.R'
+    'minid-lookup-methods.R'
     'minid-setter-methods.R'
     'minidtools.R'
     'show-methods.R'

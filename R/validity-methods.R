@@ -53,9 +53,8 @@ setValidity("minid",
                 return(msg)
               }
               # add to list check below
-              if (!(is.character(content_key(object)) |
-                   is.null(content_key(object)))) {
-                return("'content_key' slot must be a character string or NULL")
+              if (!is.character(content_key(object))) {
+                return("'content_key' slot must be a character string")
               }
             }
 )

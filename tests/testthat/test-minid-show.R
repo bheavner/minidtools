@@ -13,7 +13,7 @@ test_that("show(minid) prints expected output", {
       "status = ACTIVE\n  ",
       "locations = mdarcy - ",
       "https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz\n  ",
-      "title = mdarcy - AGR Data set with identifier-based references to ",
+      "titles = mdarcy - AGR Data set with identifier-based references to ",
       "data in cloud storage\n  ",
       "obsoleted_by = \n  ",
       "content_key = "
