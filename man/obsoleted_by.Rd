@@ -16,6 +16,8 @@ obsoleted_by(x)
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new obsloleted_by list}
 }
 \value{
 The minid obsoleted_by slot (as list)

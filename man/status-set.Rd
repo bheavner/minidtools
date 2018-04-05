@@ -4,10 +4,12 @@
 \alias{status<-}
 \title{status}
 \usage{
-status(x) <- "status string"
+status(x) <- value
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new status string}
 }
 \value{
 The minid object with specified status string

@@ -16,6 +16,8 @@ locations(x)
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new locations list}
 }
 \value{
 The minid locations (as list)

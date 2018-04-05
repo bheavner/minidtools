@@ -4,10 +4,12 @@
 \alias{locations<-}
 \title{locations}
 \usage{
-locations(x) <- "locations list"
+locations(x) <- value
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new locations list}
 }
 \value{
 The minid object with specified locations list

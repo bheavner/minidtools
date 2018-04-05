@@ -16,6 +16,8 @@ created(x)
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new created string}
 }
 \value{
 The date the minid was created (as character string)

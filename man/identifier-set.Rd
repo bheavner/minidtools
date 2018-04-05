@@ -4,10 +4,12 @@
 \alias{identifier<-}
 \title{identifier}
 \usage{
-identifier(x) <- "identifier string"
+identifier(x) <- value
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new identifier string}
 }
 \value{
 The minid object with specified identifier string

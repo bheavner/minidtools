@@ -16,6 +16,8 @@ status(x)
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new status string}
 }
 \value{
 The minid status (as character string)

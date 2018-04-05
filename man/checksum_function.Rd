@@ -16,6 +16,8 @@ checksum_function(x)
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new checksum_function string}
 }
 \value{
 The minid checksum_function (as character string)

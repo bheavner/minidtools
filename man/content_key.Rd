@@ -16,6 +16,8 @@ content_key(x)
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new content_key string}
 }
 \value{
 The minid content_key slot

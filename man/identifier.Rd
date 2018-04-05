@@ -16,6 +16,8 @@ identifier(x)
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new identifier string}
 }
 \value{
 The minid identifier string

@@ -4,10 +4,12 @@
 \alias{obsoleted_by<-}
 \title{obsoleted_by}
 \usage{
-obsoleted_by(x) <- "obsoleted_by list"
+obsoleted_by(x) <- value
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new obsoleted_by list}
 }
 \value{
 The minid object with specified obsoleted_by list

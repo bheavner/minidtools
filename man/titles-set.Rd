@@ -4,10 +4,12 @@
 \alias{titles<-}
 \title{titles}
 \usage{
-titles(x) <- "titles list"
+titles(x) <- value
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new titles list}
 }
 \value{
 The minid object with specified titles list
@@ -17,7 +19,7 @@ Set the minid titles
 }
 \examples{
 \dontrun{
-title_list <- 
+title_list <-
   list(paste0("mdarcy - AGR Data set with identifier-based references to ",
     "data in cloud storage"))
 titles(minid_object) <- title_list

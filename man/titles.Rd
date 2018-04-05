@@ -16,6 +16,8 @@ titles(x)
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new titles list}
 }
 \value{
 The minid titles (as list)

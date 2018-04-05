@@ -16,6 +16,8 @@ creator(x)
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new creator string}
 }
 \value{
 The minid creator string
