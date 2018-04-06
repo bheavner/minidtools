@@ -1,7 +1,7 @@
 #' @include AllClasses.R
 NULL
 
-# slot getters ------------------------
+# minid slot getters ------------------------
 #' identifier
 #'
 #' Get the minid identifier
@@ -176,7 +176,7 @@ setGeneric("obsoleted_by", function(x) standardGeneric("obsoleted_by"))
 #' @export
 setGeneric("content_key", function(x) standardGeneric("content_key"))
 
-# slot setters ------------------------
+# minid slot setters ------------------------
 #' identifier
 #'
 #' Set the minid identifier
@@ -365,6 +365,128 @@ setGeneric("obsoleted_by<-",
 #' @export
 setGeneric("content_key<-",
            function(x, value) standardGeneric("content_key<-"))
+
+# configuration slot getters --------------------
+#' server
+#'
+#' Get the minid server from the configuration object
+#'
+#' @param x configuration object
+#'
+#' @usage server(x)
+#'
+#' @return The minid server URL
+#'
+#' @examples
+#' \dontrun{
+#' server(configuration_object)
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("server", function(x) standardGeneric("server"))
+
+#' user
+#'
+#' Get the user from the configuration object
+#'
+#' @param x configuration object
+#'
+#' @usage user(x)
+#'
+#' @return The user
+#'
+#' @examples
+#' \dontrun{
+#' user(configuration_object)
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("user", function(x) standardGeneric("user"))
+
+#' email
+#'
+#' Get the email from the configuration object
+#'
+#' @param x configuration object
+#'
+#' @usage email(x)
+#'
+#' @return The email
+#'
+#' @examples
+#' \dontrun{
+#' email(configuration_object)
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("email", function(x) standardGeneric("email"))
+
+
+#' orcid
+#'
+#' Get the orcid from the configuration object
+#'
+#' @param x configuration object
+#'
+#' @usage orcid(x)
+#'
+#' @return The orcid
+#'
+#' @examples
+#' \dontrun{
+#' orcid(configuration_object)
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("orcid", function(x) standardGeneric("orcid"))
+
+#' code
+#'
+#' Get the code from the configuration object
+#'
+#' @param x configuration object
+#'
+#' @usage code(x)
+#'
+#' @return The code
+#'
+#' @examples
+#' \dontrun{
+#' code(configuration_object)
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("code", function(x) standardGeneric("code"))
+
+# configuration slot setters --------------------
+#' server
+#'
+#' Set the minid server URL in configuration object
+#'
+#' @param x configuration object
+#' @param value the new server URL
+#'
+#' @return The configuration object with specified server URL
+#'
+#' @examples
+#' \dontrun{
+#' server(configuration_object) <- "http://minid.bd2k.org/minid"
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("server<-", function(x, value) standardGeneric("server<-"))
+
+
+#    user = "Jane Smith",
+#    email = "jsmith@example.com",
+#    orcid = "0000-0003-2898-9044",
+#    code = "XXXX-XXX-XXXXX-XXXX-XXXX"
 
 # resolve minid  ------------------------
 #' lookup

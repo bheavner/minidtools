@@ -75,3 +75,44 @@ minid <-
         obsoleted_by = obsoleted_by,
         content_key = content_key)
   }
+
+
+#  configuration constructor -----------------------------------------
+#' Create an instance of the configuration class
+#'
+#' @param server a character string containing the minid server URL
+#'   (e.g. http://minid.bd2k.org/minid)
+#' @param user a character string containing the user name (e.g. "Jane Smith")
+#' @param email email address for minid user
+#' @param orcid the user's ORCID - see https://orcid.org/ (e.g.
+#'   "0000-0003-2898-9044")
+#' @param code the unique code sent when email address was validated
+#'
+#' @return an instance of the configuration class
+#'
+#' @examples
+#' \dontrun{
+#' example_configuration <- configuration(
+#'              server = "http://minid.bd2k.org/minid",
+#'              user = "Jane Smith",
+#'              email = "jsmith@example.com",
+#'              orcid = "0000-0003-2898-9044",
+#'              code = "XXXX-XXX-XXXXX-XXXX-XXXX"
+#' )
+#' }
+#'
+#' @import methods
+#' @export
+configuration <-
+  function(server = vector(mode = "character"),
+           user = vector(mode = "character"),
+           email = vector(mode = "character"),
+           orcid = vector(mode = "character"),
+           code = vector(mode = "character")) {
+    new("configuration",
+        server = server,
+        user = user,
+        email = email,
+        orcid = orcid,
+        code = code)
+  }
