@@ -6,12 +6,12 @@ NULL
 #' Create an instance of the minid class
 #'
 #' @param identifier a character string containing the minid
-#'   (e.g. ark:/99999/fk4mp58v5t) Note: may be NULL
+#'   (e.g. ark:/99999/fk4mp58v5t)
 #' @param creator a character string giving the name (and and optionally, ORCID)
 #'   of the person who registered the minid (e.g. "mdarcy
-#'   (0000-0003-2280-917X)"). Note: may be NULL
+#'   (0000-0003-2280-917X)").
 #' @param created a character string giving the date and time the minid was
-#'   created (e.g. "Mon, 19 Mar 2018 17:43:57 GMT") Note: may be NULL
+#'   created (e.g. "Mon, 19 Mar 2018 17:43:57 GMT")
 #' @param checksum the checksum of the identified digital object (e.g.
 #'   "6484968f81afac84857d02b573b0d589fb2f9582a2b920572830dc5781e0a53c")
 #' @param checksum_function the hashing function used to calculate the checksum
@@ -26,9 +26,8 @@ NULL
 #'   "mdarcy - AGR Data set with identifier-based references to data in cloud
 #'   storage"
 #' @param obsoleted_by For minids that have "MOTHBALLED" status, a list of
-#'   minids superceding the mothballed minid. Note: may be NULL
-#' @param content_key a character string, used for the hash of a bdbag. Note:
-#'   may be NULL
+#'   minids superceding the mothballed minid.
+#' @param content_key a character string, used for the hash of a bdbag.
 #'
 #' @return an instance of the minid class
 #'
@@ -54,9 +53,16 @@ NULL
 #' @import methods
 #' @export
 minid <-
-  function(identifier = NULL, creator = NULL, created = NULL, checksum,
-           checksum_function, status = NULL, locations = NULL, titles,
-           obsoleted_by = list(NULL), content_key = as.character(NULL)) {
+  function(identifier = vector(mode = "character"),
+           creator = vector(mode = "character"),
+           created = vector(mode = "character"),
+           checksum = vector(mode = "character"),
+           checksum_function = vector(mode = "character"),
+           status = vector(mode = "character"),
+           locations = vector(mode = "list"),
+           titles = vector(mode = "list"),
+           obsoleted_by = vector(mode = "list"),
+           content_key = vector(mode = "character")) {
     new("minid",
         identifier = identifier,
         creator = creator,
