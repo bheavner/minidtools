@@ -4,7 +4,7 @@
 #' @include AllGenerics.R
 NULL
 
-# to list --------------------------------------------------
+# minid to list --------------------------------------------------
 #' as.list
 #'
 #' Coerce minid object to list
@@ -39,5 +39,38 @@ setMethod("as.list",
                  titles = titles(x),
                  obsoleted_by = obsoleted_by(x),
                  content_key = content_key(x))
+          }
+)
+
+# configuration to list --------------------------------------------------
+#' as.list
+#'
+#' Coerce configuration object to list
+#'
+#' @param x configuration object
+#' @param ... other arguments (not used, but included for consistency with base
+#'   generic)
+#'
+#' @usage as.list(x, ...)
+#'
+#' @aliases as.list
+#'
+#' @return a named list
+#'
+#' @examples
+#' \dontrun{
+#' as.list(configuration_object)
+#' }
+#'
+#' @import methods
+#' @export
+setMethod("as.list",
+          signature = "configuration",
+          function(x) {
+            list(server = server(x),
+                 user = user(x),
+                 email = email(x),
+                 orcid = orcid(x),
+                 code = code(x))
           }
 )

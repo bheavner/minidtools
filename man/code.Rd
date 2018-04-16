@@ -5,14 +5,14 @@
 \name{code}
 \alias{code}
 \alias{code,configuration-method}
-\alias{code<-,minid-method}
+\alias{code<-,configuration-method}
 \title{code}
 \usage{
 code(x)
 
 \S4method{code}{configuration}(x)
 
-\S4method{code}{minid}(x) <- value
+\S4method{code}{configuration}(x) <- value
 }
 \arguments{
 \item{x}{configuration object}
@@ -29,7 +29,7 @@ Get the code from the configuration object
 \itemize{
 \item \code{configuration}: getter method for the code slot
 
-\item \code{minid}: setter method for the code slot
+\item \code{configuration}: setter method for the code slot
 }}
 
 \examples{

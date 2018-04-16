@@ -5,14 +5,14 @@
 \name{orcid}
 \alias{orcid}
 \alias{orcid,configuration-method}
-\alias{orcid<-,minid-method}
+\alias{orcid<-,configuration-method}
 \title{orcid}
 \usage{
 orcid(x)
 
 \S4method{orcid}{configuration}(x)
 
-\S4method{orcid}{minid}(x) <- value
+\S4method{orcid}{configuration}(x) <- value
 }
 \arguments{
 \item{x}{configuration object}
@@ -29,7 +29,7 @@ Get the orcid from the configuration object
 \itemize{
 \item \code{configuration}: getter method for the orcid slot
 
-\item \code{minid}: setter method for the orcid slot
+\item \code{configuration}: setter method for the orcid slot
 }}
 
 \examples{

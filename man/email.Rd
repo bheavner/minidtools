@@ -5,14 +5,14 @@
 \name{email}
 \alias{email}
 \alias{email,configuration-method}
-\alias{email<-,minid-method}
+\alias{email<-,configuration-method}
 \title{email}
 \usage{
 email(x)
 
 \S4method{email}{configuration}(x)
 
-\S4method{email}{minid}(x) <- value
+\S4method{email}{configuration}(x) <- value
 }
 \arguments{
 \item{x}{configuration object}
@@ -29,7 +29,7 @@ Get the email from the configuration object
 \itemize{
 \item \code{configuration}: getter method for the email slot
 
-\item \code{minid}: setter method for the email slot
+\item \code{configuration}: setter method for the email slot
 }}
 
 \examples{
