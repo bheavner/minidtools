@@ -424,7 +424,6 @@ setGeneric("user", function(x) standardGeneric("user"))
 #' @export
 setGeneric("email", function(x) standardGeneric("email"))
 
-
 #' orcid
 #'
 #' Get the orcid from the configuration object
@@ -483,10 +482,81 @@ setGeneric("code", function(x) standardGeneric("code"))
 setGeneric("server<-", function(x, value) standardGeneric("server<-"))
 
 
-#    user = "Jane Smith",
-#    email = "jsmith@example.com",
-#    orcid = "0000-0003-2898-9044",
-#    code = "XXXX-XXX-XXXXX-XXXX-XXXX"
+#' user
+#'
+#' Set the minid user in configuration object
+#'
+#' @param x configuration object
+#' @param value the new user string
+#'
+#' @return The configuration object with specified user string
+#'
+#' @examples
+#' \dontrun{
+#' user(configuration_object) <- "Jane Smith"
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("user<-", function(x, value) standardGeneric("user<-"))
+
+#' email
+#'
+#' Set the minid user email in configuration object
+#'
+#' @param x configuration object
+#' @param value the new user email string
+#'
+#' @return The configuration object with specified user email string
+#'
+#' @examples
+#' \dontrun{
+#' email(configuration_object) <- "jsmith@example.com"
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("email<-", function(x, value) standardGeneric("email<-"))
+
+#' orcid
+#'
+#' Set the minid user's orcid in configuration object
+#'
+#' @param x configuration object
+#' @param value the new user orcid string
+#'
+#' @return The configuration object with specified user orcid string
+#'
+#' @examples
+#' \dontrun{
+#' orcid(configuration_object) <- "0000-0003-2898-9044"
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("orcid<-", function(x, value) standardGeneric("orcid<-"))
+
+#' code
+#'
+#' Set the minid user's access code
+#'
+#' @param x configuration object
+#' @param value the new user access code string
+#'
+#' @return The configuration object with specified user access code
+#'
+#' @examples
+#' \dontrun{
+#' code(configuration_object) <- "XXXX-XXX-XXXXX-XXXX-XXXX"
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("code<-", function(x, value) standardGeneric("code<-"))
+
+# load config ---------------------------
+
+# save config ---------------------------
 
 # resolve minid  ------------------------
 #' lookup
@@ -507,3 +577,5 @@ setGeneric("server<-", function(x, value) standardGeneric("server<-"))
 #' @import methods
 #' @export
 setGeneric("lookup", function(x) standardGeneric("lookup"))
+
+# register user ----------------------------

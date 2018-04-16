@@ -3,7 +3,7 @@
 #' @include AllConstructors.R
 NULL
 
-# show method
+# minid show method -------------
 
 #' show method for minid object
 #'
@@ -29,6 +29,32 @@ setMethod("show", signature = "minid",
                 "  titles = ", unlist(titles(object)), "\n", # not sure - list
                 "  obsoleted_by = ", unlist(obsoleted_by(object)), "\n", # list
                 "  content_key = ", content_key(object), "\n",
+                sep = "")
+          }
+)
+
+# configuration show method -------------
+
+#' show method for configuration object
+#'
+#' @param object configuration object
+#'
+#' @examples
+#' \dontrun{
+#' show(configuration_object)
+#' configuration_object
+#' }
+#'
+#' @import methods
+#' @export
+setMethod("show", signature = "configuration",
+          function(object){
+            cat("Configuration:", "\n",
+                "  server = ", server(object), "\n",
+                "  user = ", user(object), "\n",
+                "  email = ", email(object), "\n",
+                "  orcid = ", orcid(object), "\n",
+                "  code = ", code(object), "\n",
                 sep = "")
           }
 )
