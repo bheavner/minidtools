@@ -58,3 +58,35 @@ setValidity("minid",
               }
             }
 )
+
+#  configuration validity method -----------------------------------------
+# TODO: need to add Roxygen documentation for this
+#' Check validity of minid object
+#'
+#' @name validConfiguration
+#' @import methods
+# #' @export
+setValidity("configuration",
+            function(object){
+              if (!(is.character(server(object)) |
+                    is.null(server(object)))) {
+                return("'server' slot must be a character string or NULL")
+              }
+              if (!is.character(user(object))) {
+                return("'user' slot must be a character string")
+              }
+              if (!is.character(email(object))) {
+                return("'email' slot must be a character string")
+              }
+              if (!(is.character(orcid(object)) |
+                    is.null(orcid(object)))) {
+                return("'orcid' slot must be a character string or NULL")
+              }
+              if (!(is.character(code(object)) |
+                    is.null(code(object)))) {
+                msg <- paste0("'code' slot must be a character ",
+                              "string or NULL")
+                return(msg)
+              }
+            }
+)
