@@ -10,7 +10,9 @@ LazyData: true
 RoxygenNote: 6.0.1
 Suggests: testthat,
     covr
-Imports: httr,
+Imports:
+    config,
+    httr,
     jsonlite,
     methods
 Collate: 

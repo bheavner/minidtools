@@ -3,16 +3,12 @@
 \docType{methods}
 \name{as.list,configuration-method}
 \alias{as.list,configuration-method}
-\alias{as.list}
 \title{as.list}
 \usage{
-as.list(x, ...)
+\S4method{as.list}{configuration}(x)
 }
 \arguments{
 \item{x}{configuration object}
-
-\item{...}{other arguments (not used, but included for consistency with base
-generic)}
 }
 \value{
 a named list

@@ -10,12 +10,6 @@ NULL
 #' Coerce minid object to list
 #'
 #' @param x minid object
-#' @param ... other arguments (not used, but included for consistency with base
-#'   generic)
-#'
-#' @usage as.list(x, ...)
-#'
-#' @aliases as.list
 #'
 #' @return a named list
 #'
@@ -48,12 +42,6 @@ setMethod("as.list",
 #' Coerce configuration object to list
 #'
 #' @param x configuration object
-#' @param ... other arguments (not used, but included for consistency with base
-#'   generic)
-#'
-#' @usage as.list(x, ...)
-#'
-#' @aliases as.list
 #'
 #' @return a named list
 #'
