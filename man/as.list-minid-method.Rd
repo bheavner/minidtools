@@ -3,16 +3,12 @@
 \docType{methods}
 \name{as.list,minid-method}
 \alias{as.list,minid-method}
-\alias{as.list}
 \title{as.list}
 \usage{
-as.list(x, ...)
+\S4method{as.list}{minid}(x)
 }
 \arguments{
 \item{x}{minid object}
-
-\item{...}{other arguments (not used, but included for consistency with base
-generic)}
 }
 \value{
 a named list
