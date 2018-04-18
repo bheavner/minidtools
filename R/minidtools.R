@@ -1,4 +1,4 @@
-# a place for package documentation and some general utility functions
+# a place for package documentation and functions
 
 # package documentatioon --------------
 
@@ -60,6 +60,8 @@ NULL
 #' @param section if multiple sections in the config file, which one to use
 #'   (default "default")
 #'
+#' @return An object of type "configuration"
+#'
 #' @examples
 #' \dontrun{
 #'
@@ -71,10 +73,11 @@ NULL
 #' @export
 
 load_configuration <-
-  function(config_file = "~/.minid/minid-config.json",
+  function(config_file = "~/.minid/minid-config.json", #nolint
            section = "default") {
-    if (config_file == "~/.minid/minid-config.json") {
-      config_file <- paste0(path.expand("~"), "/.minid/minid-config.json")
+    if (config_file == "~/.minid/minid-config.json") { #nolint
+      config_file <- paste0(path.expand("~"),
+                            "/.minid/minid-config.json") #nolint
     }
 
     # load json to list
@@ -91,3 +94,115 @@ load_configuration <-
     code(config) <- json_configuration$code[[1]]
     return(config)
   }
+
+# minid functions --------------------------
+
+#' Resolve a minid by identifier or file name
+#'
+#' Query the minid server specified in the configuration object to retrieve
+#' minid metadata about an identifier or file.
+#'
+#' @param query the minid to look up, specified by file name (e.g.
+#'   "file:./some/file.Rda") or identifier (e.g. "ark:/57799/b9j69h", "b9j69h",
+#'   or "minid:b9j69h")
+#'
+#' @param configuration the configuration object. Default = config (see also
+#'   \code{\link{load_configuration}})
+#'
+#' @param hash_function if performing a lookup on a file, which hash function
+#' to use for querying (default "sha256")
+#'
+#' @return An object of type "minid" or an error if the lookup fails
+#'
+#' @examples
+#' \dontrun{
+#'
+#' my_minid <- lookup(query = "ark:/57799/b9j69h", configuration = config)
+#'
+#' my_minid <- lookup(query = "b9j69h", configuration = config)
+#'
+#' my_minid <- lookup(query = "minid:b9j69h", configuration = config)
+#'
+#' my_minid <- lookup(query = "file:./some/file.Rda",
+#'                    configuration = config,
+#'                    hash = "sha256")
+#'
+#' }
+#'
+#' @export
+
+lookup <- function(query, configuration = config, hash = "sha256"){
+  # check if query is file path
+  FILE_FLAG <- stringr::str_detect(query, "^file:")
+
+  # clean query string
+  query <- .clean_query_string(query)
+
+  # do the query # handle errors
+  landing_page_prefix <- "http://minid.bd2k.org/minid/landingpage/"
+  full_url <- paste0(landing_page_prefix, "ark:/57799/", query)
+  request_object  <-
+    httr::GET(full_url,
+              httr::add_headers(Accept = "application/json"))
+  text_response <-
+    httr::content(request_object, "text", encoding = "UTF-8");
+  stopifnot(jsonlite::validate(text_response))
+  minid_JSON <- jsonlite::fromJSON(text_response)
+
+  # HERE'S A HACK
+  if (is.null(minid_JSON$obsoleted_by)) {
+    obsoleted <- list()
+  } else {
+    obsoleted <- list(minid_JSON$obsoleted_by)
+  }
+
+  # HERE'S A HACK
+  if (is.null(minid_JSON$content_key)) {
+    content_key <- vector(mode = "character")
+  } else {
+    content_key <- minid_JSON$content_key
+  }
+
+  # AND... HERE'S A HACK
+  minid(identifier = minid_JSON$identifier,
+        creator = minid_JSON$creator,
+        created = minid_JSON$created,
+        checksum = minid_JSON$checksum,
+        checksum_function = minid_JSON$checksum_function,
+        status = minid_JSON$status,
+        locations = list(minid_JSON$locations[[3]]), # clean up
+        titles = list(minid_JSON$titles[[3]]), # clean up
+        obsoleted_by = obsoleted, # should be list or NULL
+        content_key = content_key) # should be character
+}
+
+
+# misc utility functions --------------------------------------
+#' clean query string for lookup
+#' @noRd
+.clean_query_string <- function(query){
+  FILE_FLAG <- stringr::str_detect(query, "^file:")
+
+  if (FILE_FLAG) {
+    if (stringr::str_detect(query, "^file:~")){
+      # no_prefix should be string after "file:" see stringr::str_remove()
+      no_prefix <- stringr::str_remove(query, "^file:")
+      file_path <- paste0(path.expand("~"), no_prefix)
+    } else {
+      file_path <- stringr::str_remove(query, "^file:")
+    }
+    return(.get_file_hash(path = file_path, algo = "sha256"))
+  } else {
+    if (stringr::str_detect(query, "^ark:57799/")){
+      return(stringr::str_remove(query, "^ark:57799/"))
+    } else if (stringr::str_detect(query, "^minid:")){
+      return(stringr::str_remove(query, "^minid:"))
+    }
+  }
+}
+
+#' make hash for file on local machine
+#' @noRd
+.get_file_hash <- function(path, algo = "md5"){
+  digest::digest(file = path, algo)
+}

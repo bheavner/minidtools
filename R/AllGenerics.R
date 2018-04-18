@@ -554,28 +554,4 @@ setGeneric("orcid<-", function(x, value) standardGeneric("orcid<-"))
 #' @export
 setGeneric("code<-", function(x, value) standardGeneric("code<-"))
 
-# load config ---------------------------
-
-# save config ---------------------------
-
-# resolve minid  ------------------------
-#' lookup
-#'
-#' Get a minid by identifier
-#'
-#' @param x minid idenentifier (e.g. ark:/57799/b9j69h)
-#'
-#' @usage lookup(x)
-#'
-#' @return A minid object with filled slots
-#'
-#' @examples
-#' \dontrun{
-#' my_minid <- lookup("ark:/57799/b9j69h")
-#' }
-#'
-#' @import methods
-#' @export
-setGeneric("lookup", function(x) standardGeneric("lookup"))
-
 # register user ----------------------------
