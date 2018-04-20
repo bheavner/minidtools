@@ -21,6 +21,24 @@ NULL
 #' @export
 setGeneric("identifier", function(x) standardGeneric("identifier"))
 
+#' short identifier
+#'
+#' Get the minid short identifier
+#'
+#' @param x minid object
+#'
+#' @usage short_identifier(x)
+#'
+#' @return The minid short identifier string
+#'
+#' @examples
+#' \dontrun{
+#' short_identifier(minid_object)
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("short_identifier", function(x) standardGeneric("short_identifier"))
 
 #' creator
 #'
@@ -38,6 +56,23 @@ setGeneric("identifier", function(x) standardGeneric("identifier"))
 #' @import methods
 #' @export
 setGeneric("creator", function(x) standardGeneric("creator"))
+
+#' orcid
+#'
+#' Get the minid orcid
+#'
+#' @param x minid object
+#'
+#' @return The minid orcid string
+#'
+#' @examples
+#' \dontrun{
+#' orcid(minid_object)
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("orcid", function(x) standardGeneric("orcid"))
 
 #' created
 #'
@@ -195,6 +230,26 @@ setGeneric("content_key", function(x) standardGeneric("content_key"))
 #' @export
 setGeneric("identifier<-", function(x, value) standardGeneric("identifier<-"))
 
+#' short identifier
+#'
+#' Set the minid short identifier
+#'
+#' @param x minid object
+#' @param value the new short identifier string
+#'
+#' @return The minid object with specified short identifier string
+#'
+#' @examples
+#' \dontrun{
+#' short_identifier(minid_object) <- "minid:b9j69h"
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("short_identifier<-", function(x, value) {
+  standardGeneric("short_identifier<-")
+  })
+
 #' creator
 #'
 #' Set the minid creator
@@ -212,6 +267,24 @@ setGeneric("identifier<-", function(x, value) standardGeneric("identifier<-"))
 #' @import methods
 #' @export
 setGeneric("creator<-", function(x, value) standardGeneric("creator<-"))
+
+#' orcid
+#'
+#' Set the minid orcid
+#'
+#' @param x minid object
+#' @param value the new orcid string
+#'
+#' @return The minid object with specified orcid string
+#'
+#' @examples
+#' \dontrun{
+#' orcid(minid_object) <- "mdarcy (<id string>)"
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("orcid<-", function(x, value) standardGeneric("orcid<-"))
 
 #' created
 #'
@@ -318,8 +391,10 @@ setGeneric("locations<-", function(x, value) standardGeneric("locations<-"))
 #' @examples
 #' \dontrun{
 #' title_list <-
-#'   list(paste0("mdarcy - AGR Data set with identifier-based references to ",
-#'     "data in cloud storage"))
+#'   list(list(created = "Mon, 19 Mar 2018 17:43:57 GMT",
+#'     creator = "mdarcy",
+#'     title = paste0("AGR Data set with identifier-based references to",
+#'               "data in cloud storage")))
 #' titles(minid_object) <- title_list
 #' }
 #'

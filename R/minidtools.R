@@ -102,9 +102,12 @@ load_configuration <-
 #' Query the minid server specified in the configuration object to retrieve
 #' minid metadata about an identifier or file.
 #'
+#' NOTE: lookup currently supports minids of the form "ark:/57799/b9j69h" or
+#' "mind:b9j69h" or local files specified as "file:/path/to/file"
+#'
 #' @param query the minid to look up, specified by file name (e.g.
-#'   "file:./some/file.Rda") or identifier (e.g. "ark:/57799/b9j69h", "b9j69h",
-#'   or "minid:b9j69h")
+#'   "file:./some/file.Rda") or identifier (e.g. "ark:/57799/b9j69h" or
+#'   "minid:b9j69h")
 #'
 #' @param configuration the configuration object. Default = config (see also
 #'   \code{\link{load_configuration}})
@@ -118,9 +121,6 @@ load_configuration <-
 #' \dontrun{
 #'
 #' my_minid <- lookup(query = "ark:/57799/b9j69h", configuration = config)
-#'
-#' my_minid <- lookup(query = "b9j69h", configuration = config)
-#'
 #' my_minid <- lookup(query = "minid:b9j69h", configuration = config)
 #'
 #' my_minid <- lookup(query = "file:./some/file.Rda",
@@ -135,8 +135,20 @@ lookup <- function(query, configuration = config, hash = "sha256"){
   # check if query is file path
   FILE_FLAG <- stringr::str_detect(query, "^file:")
 
-  # clean query string
-  query <- .clean_query_string(query)
+  if (FILE_FLAG) {
+    if (stringr::str_detect(query, "^file:~")){
+      # no_prefix should be string after "file:" see stringr::str_remove()
+      no_prefix <- stringr::str_remove(query, "^file:")
+      file_path <- paste0(path.expand("~"), no_prefix)
+    } else {
+      file_path <- stringr::str_remove(query, "^file:")
+    }
+    hash_query <- digest::digest(file = file_path, hash)
+  }
+
+  if (stringr::str_detect(query, "^minid:")) {
+    query <- stringr::str_replace(query, "^minid:", "ark:/5779/")
+  }
 
   # do the query # handle errors
   landing_page_prefix <- "http://minid.bd2k.org/minid/landingpage/"
@@ -178,31 +190,3 @@ lookup <- function(query, configuration = config, hash = "sha256"){
 
 
 # misc utility functions --------------------------------------
-#' clean query string for lookup
-#' @noRd
-.clean_query_string <- function(query){
-  FILE_FLAG <- stringr::str_detect(query, "^file:")
-
-  if (FILE_FLAG) {
-    if (stringr::str_detect(query, "^file:~")){
-      # no_prefix should be string after "file:" see stringr::str_remove()
-      no_prefix <- stringr::str_remove(query, "^file:")
-      file_path <- paste0(path.expand("~"), no_prefix)
-    } else {
-      file_path <- stringr::str_remove(query, "^file:")
-    }
-    return(.get_file_hash(path = file_path, algo = "sha256"))
-  } else {
-    if (stringr::str_detect(query, "^ark:57799/")){
-      return(stringr::str_remove(query, "^ark:57799/"))
-    } else if (stringr::str_detect(query, "^minid:")){
-      return(stringr::str_remove(query, "^minid:"))
-    }
-  }
-}
-
-#' make hash for file on local machine
-#' @noRd
-.get_file_hash <- function(path, algo = "md5"){
-  digest::digest(file = path, algo)
-}

@@ -2,22 +2,37 @@
 % Please edit documentation in R/AllGenerics.R
 \name{orcid<-}
 \alias{orcid<-}
+\alias{orcid<-}
 \title{orcid}
 \usage{
 orcid(x) <- value
+
+orcid(x) <- value
 }
 \arguments{
+\item{x}{minid object}
+
+\item{value}{the new orcid string}
+
 \item{x}{configuration object}
 
 \item{value}{the new user orcid string}
 }
 \value{
+The minid object with specified orcid string
+
 The configuration object with specified user orcid string
 }
 \description{
+Set the minid orcid
+
 Set the minid user's orcid in configuration object
 }
 \examples{
+\dontrun{
+orcid(minid_object) <- "mdarcy (<id string>)"
+}
+
 \dontrun{
 orcid(configuration_object) <- "0000-0003-2898-9044"
 }

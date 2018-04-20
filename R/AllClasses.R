@@ -5,8 +5,10 @@
 #'
 #' @slot identifier a character string containing the minid
 #'   (e.g. ark:/99999/fk4mp58v5t)
-#' @slot creator a character string giving the name (and, optionally, ORCID) of
-#'   the person who registered the minid (e.g. "mdarcy (<id string>)")
+#' @slot creator a character string giving the name of the person who
+#'   registered the minid (e.g. "mdarcy")
+#' @slot orcid a character string giving the ORCID of the person who registered
+#'   the minid
 #' @slot created a character string giving the date and time the minid was
 #'   created (e.g. "Mon, 19 Mar 2018 17:43:57 GMT")
 #' @slot checksum the checksum of the identified digital object (e.g.
@@ -32,13 +34,15 @@
 setClass("minid",
          slots = c(
            identifier = "character",
+           short_identifier = "character",
            checksum = "character",
-           titles = "list",
-           locations = "list",
+           titles = "list", # includes created, creator, title
+           locations = "list", # includes created, creator, link, uri
            status = "character",
            obsoleted_by = "list",
            content_key = "character",
            creator = "character",
+           orcid = "character",
            created = "character",
            checksum_function = "character"
          ))

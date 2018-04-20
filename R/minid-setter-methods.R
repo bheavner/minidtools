@@ -13,6 +13,16 @@ setReplaceMethod("identifier", "minid",
                    x
                    })
 
+#' @describeIn short_identifier setter method for the short_identifier slot
+#' @param value the new short_identifier string
+#' @import methods
+setReplaceMethod("short_identifier", "minid",
+                 function(x, value) {
+                   x@short_identifier <- value
+                   validObject(x)
+                   x
+                 })
+
 #' @describeIn creator setter method for the creator slot
 #' @param value the new creator string
 #' @import methods
@@ -22,6 +32,16 @@ setReplaceMethod("creator", "minid",
                    validObject(x)
                    x
                    })
+
+#' @describeIn orcid setter method for the orcid slot
+#' @param value the new orcid string
+#' @import methods
+setReplaceMethod("orcid", "minid",
+                 function(x, value) {
+                   x@orcid <- value
+                   validObject(x)
+                   x
+                 })
 
 #' @describeIn created setter method for the created slot
 #' @param value the new created string

@@ -4,16 +4,21 @@
 \alias{minid}
 \title{Create an instance of the minid class}
 \usage{
-minid(identifier = vector(mode = "character"), creator = vector(mode =
-  "character"), created = vector(mode = "character"), checksum = vector(mode
-  = "character"), checksum_function = vector(mode = "character"),
-  status = vector(mode = "character"), locations = vector(mode = "list"),
-  titles = vector(mode = "list"), obsoleted_by = vector(mode = "list"),
-  content_key = vector(mode = "character"))
+minid(identifier = vector(mode = "character"),
+  short_identifier = vector(mode = "character"), creator = vector(mode =
+  "character"), orcid = vector(mode = "character"), created = vector(mode =
+  "character"), checksum = vector(mode = "character"),
+  checksum_function = vector(mode = "character"), status = vector(mode =
+  "character"), locations = vector(mode = "list"), titles = vector(mode =
+  "list"), obsoleted_by = vector(mode = "list"), content_key = vector(mode =
+  "character"))
 }
 \arguments{
 \item{identifier}{a character string containing the minid
 (e.g. ark:/99999/fk4mp58v5t)}
+
+\item{short_identifier}{a character string containing the short minid
+(e.g. "minid:fk4mp58v5t")}
 
 \item{creator}{a character string giving the name (and and optionally, ORCID)
 of the person who registered the minid (e.g. "mdarcy
@@ -31,14 +36,17 @@ created (e.g. "Mon, 19 Mar 2018 17:43:57 GMT")}
 \item{status}{The minid status (e.g. "ACTIVE" or "MOTHBALLED"). Note: may be
 NULL}
 
-\item{locations}{A list of locations hostingthe identified digital object.
-(e.g. "mdarcy -
-https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz"). Note: may be
-NULL}
+\item{locations}{A list of named lists containing locations hosting the
+identified digital object (e.g. locations[[1]]$created = "Mon, 19 Mar 2018
+17:43:57 GMT", locations[[1]]$creator = "mdarcy", locations[[1]]$link =
+"https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz"),
+locations[[1]]$uri =
+"https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz").}
 
-\item{titles}{A list of titles for the identified digital object (e.g.
-"mdarcy - AGR Data set with identifier-based references to data in cloud
-storage"}
+\item{titles}{A list of named lists containing titles for the identified
+digital object (e.g. titles[[1]]$creator = "mdarcy", titles[[1]]$created =
+"Mon, 19 Mar 2018 17:43:57 GMT", titles[[1]]$title = "AGR Data set with
+identifier-based references to data in cloud storage"}
 
 \item{obsoleted_by}{For minids that have "MOTHBALLED" status, a list of
 minids superceding the mothballed minid.}
@@ -55,15 +63,25 @@ Create an instance of the minid class
 \dontrun{
 test_minid <- minid(
  identifier = "ark:/57799/b9j69h",
- creator = "mdarcy (0000-0003-2280-917X)",
+ short_identifier = "minid:fk4mp58v5t",
+ creator = "mdarcy",
+ orcid =  "0000-0003-2280-917X",
  created = "Mon, 19 Mar 2018 17:43:57 GMT",
  checksum = paste0("6484968f81afac84857d02b573b0d589fb2f9582a2b920572830dc",
                    "5781e0a53c"),
  checksum_function = "SHA",
  status = "ACTIVE",
  locations = list(
-   "https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz"),
- titles = list(paste0("AGR Data set with identifier-based references to",
+   list(created = "Mon, 19 Mar 2018 17:43:57 GMT",
+     creator = "mdarcy",
+     link =
+      "https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz",
+     uri =
+      "https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz")),
+ titles = list(
+   list(created = "Mon, 19 Mar 2018 17:43:57 GMT",
+     creator = "mdarcy",
+     title = paste0("AGR Data set with identifier-based references to",
                       "data in cloud storage")),
  obsoleted_by = list(NULL),
  content_key = as.character(NULL)

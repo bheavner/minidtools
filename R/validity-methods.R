@@ -16,8 +16,16 @@ setValidity("minid",
                    is.null(identifier(object)))) {
                 return("'identifier' slot must be a character string or NULL")
               }
+              if (!(is.character(short_identifier(object)) |
+                    is.null(short_identifier(object)))) {
+                return(paste0("'short_identifier' slot must be a character",
+                              " string or NULL"))
+              }
               if (!is.character(creator(object))) {
                 return("'creator' slot must be a character string")
+              }
+              if (!is.character(orcid(object))) {
+                return("'orcid' slot must be a character string")
               }
               if (!is.character(created(object))) {
                 return("'created' slot must be a character string")

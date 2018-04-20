@@ -5,10 +5,20 @@ test_that("identifier(minid) returns the expected string", {
   expect_identical(identifier(demo), "ark:/57799/b9j69h")
 })
 
+test_that("short_identifier(minid) returns the expected string", {
+  load("demo.rda")
+  expect_identical(short_identifier(demo), "minid:b9j69h")
+})
+
 test_that("creator(minid) returns the expected string", {
   load("demo.rda")
-  expect_identical(creator(demo), "mdarcy (<id string>)")
+  expect_identical(creator(demo), "mdarcy")
   })
+
+test_that("orcid(minid) returns the expected string", {
+  load("demo.rda")
+  expect_identical(orcid(demo), "<id string>")
+})
 
 test_that("created(minid) returns the expected string", {
   load("demo.rda")
@@ -32,16 +42,24 @@ test_that("status(minid) returns the expected string", {
   expect_identical(status(demo), "ACTIVE")
 })
 
-test_that("locations(minid) returns the expected string", {
+test_that("locations(minid) returns the expected list", {
   load("demo.rda")
-  locations <- list(
-    "mdarcy - https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz")
-  expect_identical(locations(demo), locations)
+  expected_locations <- list(
+    list(created = "Mon, 19 Mar 2018 17:43:57 GMT",
+         creator = "mdarcy",
+         link = "https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz",
+         uri = "https://nih-commons.s3.amazonaws.com/misc/agr-example.tgz"))
+  expect_identical(locations(demo), expected_locations)
 })
 
-test_that("titles(minid) returns the expected string", {
+test_that("titles(minid) returns the expected list", {
   load("demo.rda")
-  expect_match(titles(demo)[[1]], "mdarcy - AGR Data.*")
+  expected_titles <- list(
+    list(created = "Mon, 19 Mar 2018 17:43:57 GMT",
+         creator = "mdarcy",
+         title = paste0("AGR Data set with identifier-based references to",
+                        "data in cloud storage")))
+  expect_identical(titles(demo), expected_titles)
 })
 
 test_that("obsoleted_by(minid) returns a list", {

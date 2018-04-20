@@ -20,8 +20,10 @@ Set the minid titles
 \examples{
 \dontrun{
 title_list <-
-  list(paste0("mdarcy - AGR Data set with identifier-based references to ",
-    "data in cloud storage"))
+  list(list(created = "Mon, 19 Mar 2018 17:43:57 GMT",
+    creator = "mdarcy",
+    title = paste0("AGR Data set with identifier-based references to",
+              "data in cloud storage")))
 titles(minid_object) <- title_list
 }
 

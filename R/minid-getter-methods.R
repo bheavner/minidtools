@@ -8,9 +8,17 @@ NULL
 #' @import methods
 setMethod("identifier", "minid", function(x) x@identifier)
 
+#' @describeIn short_identifier getter method for the short_identifier slot
+#' @import methods
+setMethod("short_identifier", "minid", function(x) x@short_identifier)
+
 #' @describeIn creator getter method for the creator slot
 #' @import methods
 setMethod("creator", "minid", function(x) x@creator)
+
+#' @describeIn orcid getter method for the orcid slot
+#' @import methods
+setMethod("orcid", "minid", function(x) x@orcid)
 
 #' @describeIn created getter method for the created slot
 #' @import methods
