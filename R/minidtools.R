@@ -103,17 +103,13 @@ load_configuration <-
 #' minid metadata about an identifier or file.
 #'
 #' NOTE: lookup currently supports minids of the form "ark:/57799/b9j69h" or
-#' "mind:b9j69h" or local files specified as "file:/path/to/file"
+#' "mind:b9j69h"
 #'
-#' @param query the minid to look up, specified by file name (e.g.
-#'   "file:./some/file.Rda") or identifier (e.g. "ark:/57799/b9j69h" or
-#'   "minid:b9j69h")
+#' @param query the minid to look up, specified by identifier (e.g.
+#'   "ark:/57799/b9j69h" or "minid:b9j69h")
 #'
 #' @param configuration the configuration object. Default = config (see also
 #'   \code{\link{load_configuration}})
-#'
-#' @param hash_function if performing a lookup on a file, which hash function
-#' to use for querying (default "sha256")
 #'
 #' @return An object of type "minid" or an error if the lookup fails
 #'
@@ -123,70 +119,127 @@ load_configuration <-
 #' my_minid <- lookup(query = "ark:/57799/b9j69h", configuration = config)
 #' my_minid <- lookup(query = "minid:b9j69h", configuration = config)
 #'
-#' my_minid <- lookup(query = "file:./some/file.Rda",
-#'                    configuration = config,
-#'                    hash = "sha256")
-#'
 #' }
 #'
 #' @export
 
-lookup <- function(query, configuration = config, hash = "sha256"){
-  # check if query is file path
-  FILE_FLAG <- stringr::str_detect(query, "^file:")
-
-  if (FILE_FLAG) {
-    if (stringr::str_detect(query, "^file:~")){
-      # no_prefix should be string after "file:" see stringr::str_remove()
-      no_prefix <- stringr::str_remove(query, "^file:")
-      file_path <- paste0(path.expand("~"), no_prefix)
-    } else {
-      file_path <- stringr::str_remove(query, "^file:")
-    }
-    hash_query <- digest::digest(file = file_path, hash)
+lookup <- function(query, configuration = config){
+  if (!(stringr::str_detect(query, "^minid:") |
+        stringr::str_detect(query, "^ark:"))) {
+    msg <-
+      'query must be a minid of the form "ark:/57799/b9j69h" or "mind:b9j69h"'
+    stop(msg)
   }
 
   if (stringr::str_detect(query, "^minid:")) {
-    query <- stringr::str_replace(query, "^minid:", "ark:/5779/")
+    query <- stringr::str_replace(query, "^minid:", "ark:/57799/")
   }
 
-  # do the query # handle errors
-  landing_page_prefix <- "http://minid.bd2k.org/minid/landingpage/"
-  full_url <- paste0(landing_page_prefix, "ark:/57799/", query)
-  request_object  <-
-    httr::GET(full_url,
-              httr::add_headers(Accept = "application/json"))
-  text_response <-
-    httr::content(request_object, "text", encoding = "UTF-8");
-  stopifnot(jsonlite::validate(text_response))
-  minid_JSON <- jsonlite::fromJSON(text_response)
+  # set url
+  url <- paste0(server(config), "minid/", query)
 
-  # HERE'S A HACK
-  if (is.null(minid_JSON$obsoleted_by)) {
-    obsoleted <- list()
-  } else {
-    obsoleted <- list(minid_JSON$obsoleted_by)
+  # set user agent
+  ua <- httr::user_agent("https://github.com/bheavner/minidtools")
+
+  # send request
+  resp <- httr::GET(url, ua)
+
+  # check for JSON response
+  if (httr::http_type(resp) != "application/json") {
+    stop("API did not return json", call. = FALSE)
   }
 
-  # HERE'S A HACK
-  if (is.null(minid_JSON$content_key)) {
-    content_key <- vector(mode = "character")
-  } else {
-    content_key <- minid_JSON$content_key
+  # parse json
+  parsed <- jsonlite::fromJSON(httr::content(resp, "text", encoding = "UTF-8"),
+                               simplifyVector = FALSE)
+
+  # catch errors
+  if (httr::http_error(resp)) {
+    stop(
+      sprintf(
+        "BD2K minid API request failed [%s]\n%s\n<%s>",
+        httr::status_code(resp),
+        parsed$message,
+        parsed$documentation_url
+      ),
+      call. = FALSE
+    )
   }
 
-  # AND... HERE'S A HACK
-  minid(identifier = minid_JSON$identifier,
-        creator = minid_JSON$creator,
-        created = minid_JSON$created,
-        checksum = minid_JSON$checksum,
-        checksum_function = minid_JSON$checksum_function,
-        status = minid_JSON$status,
-        locations = list(minid_JSON$locations[[3]]), # clean up
-        titles = list(minid_JSON$titles[[3]]), # clean up
-        obsoleted_by = obsoleted, # should be list or NULL
-        content_key = content_key) # should be character
+  # instantiate minid object
+  new_minid <- minid()
+
+  # fill minid slots NOTE: assumes API only returns one minid per query
+  parsed <- parsed[[1]]
+
+  checksum(new_minid) <- as.character(parsed$checksum)
+  checksum_function(new_minid) <- as.character(parsed$checksum_function)
+  content_key(new_minid) <- as.character(parsed$content_key)
+  created(new_minid) <- as.character(parsed$created)
+  creator(new_minid) <- as.character(parsed$creator)
+  identifier(new_minid) <- as.character(parsed$identifier)
+  short_identifier(new_minid) <- as.character(parsed$short_identifier)
+
+  # check before adding optional slots
+  if("orcid" %in% names(parsed)) {
+    orcid(new_minid) <- as.character(parsed$orcid)
+  }
+
+  if("status" %in% names(parsed)) {
+    status(new_minid) <- as.character(parsed$status)
+  }
+
+
+  # list items require a bit more processing...
+  # build list of locations
+  locations_list <- vector("list", length = length(parsed$locations))
+
+  for (index in seq(length(parsed$locations))) {
+    locations_list[[index]] <- list(
+      "created" = parsed$locations[[index]]$created,
+      "creator" = parsed$locations[[index]]$creator,
+      "link" = parsed$locations[[index]]$link,
+      "uri" = parsed$locations[[index]]$uri
+    )
+  }
+  # assign to slot
+  locations(new_minid) <- locations_list
+
+  # build list of titles
+  titles_list <- vector("list", length = length(parsed$titles))
+
+  for (index in seq(length(parsed$titles))) {
+    titles_list[[index]] <- list(
+      "created" = parsed$titles[[index]]$created,
+      "creator" = parsed$titles[[index]]$creator,
+      "title" = parsed$titles[[index]]$title
+    )
+  }
+  # assign to slot
+  titles(new_minid) <- titles_list
+
+  # and an optional list
+  if("obsoleted_by" %in% names(parsed)) {
+    if (length(parsed$obsoleted_by) ==0) {
+      obsoleted_by_list <- list(" ")
+      obsoleted_by(new_minid) <- obsoleted_by_list
+    } else {
+      for (index in seq(length(parsed$obsoleted_by))) {
+        obsoleted_by_list <- vector("list",
+                                    length = length(parsed$obsoleted_by))
+        obsoleted_by_list[[index]] <- parsed$obsoleted_by[[index]]
+        obsoleted_by(new_minid) <- obsoleted_by_list
+      }
+    }
+  }
+
+  # return our object
+  new_minid
 }
 
 
 # misc utility functions --------------------------------------
+#' hack to pass devtools::check()
+#' see: https://stackoverflow.com/questions/9439256/
+#' @noRd
+utils::globalVariables(c("config"))

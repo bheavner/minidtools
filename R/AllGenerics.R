@@ -59,16 +59,11 @@ setGeneric("creator", function(x) standardGeneric("creator"))
 
 #' orcid
 #'
-#' Get the minid orcid
+#' Get the minid or configuration orcid
 #'
-#' @param x minid object
+#' @param x minid or configuration object
 #'
-#' @return The minid orcid string
-#'
-#' @examples
-#' \dontrun{
-#' orcid(minid_object)
-#' }
+#' @return The minid or configuration orcid string
 #'
 #' @import methods
 #' @export
@@ -270,17 +265,12 @@ setGeneric("creator<-", function(x, value) standardGeneric("creator<-"))
 
 #' orcid
 #'
-#' Set the minid orcid
+#' Set the minid or configuration orcid
 #'
-#' @param x minid object
+#' @param x minid or configuration object
 #' @param value the new orcid string
 #'
-#' @return The minid object with specified orcid string
-#'
-#' @examples
-#' \dontrun{
-#' orcid(minid_object) <- "mdarcy (<id string>)"
-#' }
+#' @return The minid or configuration object with specified orcid string
 #'
 #' @import methods
 #' @export
@@ -499,25 +489,6 @@ setGeneric("user", function(x) standardGeneric("user"))
 #' @export
 setGeneric("email", function(x) standardGeneric("email"))
 
-#' orcid
-#'
-#' Get the orcid from the configuration object
-#'
-#' @param x configuration object
-#'
-#' @usage orcid(x)
-#'
-#' @return The orcid
-#'
-#' @examples
-#' \dontrun{
-#' orcid(configuration_object)
-#' }
-#'
-#' @import methods
-#' @export
-setGeneric("orcid", function(x) standardGeneric("orcid"))
-
 #' code
 #'
 #' Get the code from the configuration object
@@ -592,24 +563,6 @@ setGeneric("user<-", function(x, value) standardGeneric("user<-"))
 #' @import methods
 #' @export
 setGeneric("email<-", function(x, value) standardGeneric("email<-"))
-
-#' orcid
-#'
-#' Set the minid user's orcid in configuration object
-#'
-#' @param x configuration object
-#' @param value the new user orcid string
-#'
-#' @return The configuration object with specified user orcid string
-#'
-#' @examples
-#' \dontrun{
-#' orcid(configuration_object) <- "0000-0003-2898-9044"
-#' }
-#'
-#' @import methods
-#' @export
-setGeneric("orcid<-", function(x, value) standardGeneric("orcid<-"))
 
 #' code
 #'

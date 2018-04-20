@@ -5,7 +5,7 @@ test_that("show(configuration) prints expected output", {
   expected_regex <-
     paste0(
       "Configuration:\n  ",
-      "server = http://minid.bd2k.org/minid\n  ",
+      "server = http://minid.bd2k.org/\n  ",
       "user = Jane Smith\n  ",
       "email = jsmith@example.com\n  ",
       "orcid = 0000-0003-2898-9044\n  ",

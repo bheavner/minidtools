@@ -4,18 +4,14 @@
 \alias{lookup}
 \title{Resolve a minid by identifier or file name}
 \usage{
-lookup(query, configuration = config, hash = "sha256")
+lookup(query, configuration = config)
 }
 \arguments{
-\item{query}{the minid to look up, specified by file name (e.g.
-"file:./some/file.Rda") or identifier (e.g. "ark:/57799/b9j69h" or
-"minid:b9j69h")}
+\item{query}{the minid to look up, specified by identifier (e.g.
+"ark:/57799/b9j69h" or "minid:b9j69h")}
 
 \item{configuration}{the configuration object. Default = config (see also
 \code{\link{load_configuration}})}
-
-\item{hash_function}{if performing a lookup on a file, which hash function
-to use for querying (default "sha256")}
 }
 \value{
 An object of type "minid" or an error if the lookup fails
@@ -26,17 +22,13 @@ minid metadata about an identifier or file.
 }
 \details{
 NOTE: lookup currently supports minids of the form "ark:/57799/b9j69h" or
-"mind:b9j69h" or local files specified as "file:/path/to/file"
+"mind:b9j69h"
 }
 \examples{
 \dontrun{
 
 my_minid <- lookup(query = "ark:/57799/b9j69h", configuration = config)
 my_minid <- lookup(query = "minid:b9j69h", configuration = config)
-
-my_minid <- lookup(query = "file:./some/file.Rda",
-                   configuration = config,
-                   hash = "sha256")
 
 }
 

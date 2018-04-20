@@ -2,7 +2,7 @@ context("test_configuration_getters - unit tests")
 
 test_that("server(configuration) returns the expected string", {
   load("demo-config.rda")
-  expect_identical(server(demo_config), "http://minid.bd2k.org/minid")
+  expect_identical(server(demo_config), "http://minid.bd2k.org/")
 })
 
 test_that("user(configuration)) returns the expected string", {

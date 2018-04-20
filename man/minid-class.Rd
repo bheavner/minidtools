@@ -13,6 +13,9 @@ An S4 class to represent a minid.
 \item{\code{identifier}}{a character string containing the minid
 (e.g. ark:/99999/fk4mp58v5t)}
 
+\item{\code{short_identifier}}{a character string containing the short form minid
+(e.g. minid:fk4mp58v5t)}
+
 \item{\code{creator}}{a character string giving the name of the person who
 registered the minid (e.g. "mdarcy")}
 

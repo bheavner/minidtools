@@ -5,6 +5,8 @@
 #'
 #' @slot identifier a character string containing the minid
 #'   (e.g. ark:/99999/fk4mp58v5t)
+#' @slot short_identifier a character string containing the short form minid
+#'   (e.g. minid:fk4mp58v5t)
 #' @slot creator a character string giving the name of the person who
 #'   registered the minid (e.g. "mdarcy")
 #' @slot orcid a character string giving the ORCID of the person who registered

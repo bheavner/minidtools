@@ -20,9 +20,11 @@ minid(identifier = vector(mode = "character"),
 \item{short_identifier}{a character string containing the short minid
 (e.g. "minid:fk4mp58v5t")}
 
-\item{creator}{a character string giving the name (and and optionally, ORCID)
-of the person who registered the minid (e.g. "mdarcy
-(0000-0003-2280-917X)").}
+\item{creator}{a character string giving the name of the person who
+registered the minid (e.g. "mdarcy").}
+
+\item{orcid}{a character string giving the ORCid of the person who registered
+the minid (e.g. "0000-0003-2280-917X")}
 
 \item{created}{a character string giving the date and time the minid was
 created (e.g. "Mon, 19 Mar 2018 17:43:57 GMT")}

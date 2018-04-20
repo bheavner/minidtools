@@ -5,15 +5,12 @@
 \docType{methods}
 \name{orcid}
 \alias{orcid}
-\alias{orcid}
 \alias{orcid,configuration-method}
 \alias{orcid<-,configuration-method}
 \alias{orcid,minid-method}
 \alias{orcid<-,minid-method}
 \title{orcid}
 \usage{
-orcid(x)
-
 orcid(x)
 
 \S4method{orcid}{configuration}(x)
@@ -25,23 +22,15 @@ orcid(x)
 \S4method{orcid}{minid}(x) <- value
 }
 \arguments{
-\item{x}{minid object}
-
-\item{value}{the new orcid string}
-
-\item{x}{configuration object}
+\item{x}{minid or configuration object}
 
 \item{value}{the new orcid string}
 }
 \value{
-The minid orcid string
-
-The orcid
+The minid or configuration orcid string
 }
 \description{
-Get the minid orcid
-
-Get the orcid from the configuration object
+Get the minid or configuration orcid
 }
 \section{Methods (by class)}{
 \itemize{
@@ -56,11 +45,6 @@ Get the orcid from the configuration object
 
 \examples{
 \dontrun{
-orcid(minid_object)
+orcid(configuration_object) <- "0000-0003-2898-9044"
 }
-
-\dontrun{
-orcid(configuration_object)
-}
-
 }
