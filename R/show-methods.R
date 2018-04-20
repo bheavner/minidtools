@@ -19,15 +19,21 @@ NULL
 #' @export
 setMethod("show", signature = "minid",
           function(object){
-            cat("MINID:", "\n", "  identifier = ", identifier(object), "\n",
+            cat("MINID:", "\n",
+                "  identifier = ", identifier(object), "\n",
+                "  short_identifier = ", short_identifier(object), "\n",
                 "  creator = ", creator(object), "\n",
+                "  orcid = ", orcid(object), "\n",
                 "  created = ", created(object), "\n",
                 "  checksum = ", checksum(object), "\n",
                 "  checksum_function = ", checksum_function(object), "\n",
                 "  status = ", status(object), "\n",
-                "  locations = ", unlist(locations(object)), "\n", # not sure
-                "  titles = ", unlist(titles(object)), "\n", # not sure - list
-                "  obsoleted_by = ", unlist(obsoleted_by(object)), "\n", # list
+                "  locations = ", (locations(object)[[1]]$link), "\n", # list
+                "    (use locations(object) for more)\n",
+                "  titles = ", (titles(object))[[1]]$title, "\n", # list
+                "    (use titles(object) for more)\n",
+                "  obsoleted_by = ", (obsoleted_by(object))[[1]], "\n", # list
+                "    (use obsoleted_by(object) for more)\n",
                 "  content_key = ", content_key(object), "\n",
                 sep = "")
           }

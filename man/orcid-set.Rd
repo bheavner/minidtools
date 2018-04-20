@@ -7,19 +7,13 @@
 orcid(x) <- value
 }
 \arguments{
-\item{x}{configuration object}
+\item{x}{minid or configuration object}
 
-\item{value}{the new user orcid string}
+\item{value}{the new orcid string}
 }
 \value{
-The configuration object with specified user orcid string
+The minid or configuration object with specified orcid string
 }
 \description{
-Set the minid user's orcid in configuration object
-}
-\examples{
-\dontrun{
-orcid(configuration_object) <- "0000-0003-2898-9044"
-}
-
+Set the minid or configuration orcid
 }

@@ -6,10 +6,22 @@ test_that('identifier(demo) <- "foo" works', {
   expect_identical(identifier(demo), "foo")
 })
 
+test_that('short_identifier(demo) <- "foo" works', {
+  load("demo.rda")
+  short_identifier(demo) <- "foo"
+  expect_identical(short_identifier(demo), "foo")
+})
+
 test_that('creator(demo) <- "foo" works', {
   load("demo.rda")
   creator(demo) <- "foo"
   expect_identical(creator(demo), "foo")
+})
+
+test_that('orcid(demo) <- "foo" works', {
+  load("demo.rda")
+  orcid(demo) <- "foo"
+  expect_identical(orcid(demo), "foo")
 })
 
 test_that('created(demo) <- "foo" works', {

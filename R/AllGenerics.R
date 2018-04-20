@@ -21,6 +21,24 @@ NULL
 #' @export
 setGeneric("identifier", function(x) standardGeneric("identifier"))
 
+#' short identifier
+#'
+#' Get the minid short identifier
+#'
+#' @param x minid object
+#'
+#' @usage short_identifier(x)
+#'
+#' @return The minid short identifier string
+#'
+#' @examples
+#' \dontrun{
+#' short_identifier(minid_object)
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("short_identifier", function(x) standardGeneric("short_identifier"))
 
 #' creator
 #'
@@ -38,6 +56,18 @@ setGeneric("identifier", function(x) standardGeneric("identifier"))
 #' @import methods
 #' @export
 setGeneric("creator", function(x) standardGeneric("creator"))
+
+#' orcid
+#'
+#' Get the minid or configuration orcid
+#'
+#' @param x minid or configuration object
+#'
+#' @return The minid or configuration orcid string
+#'
+#' @import methods
+#' @export
+setGeneric("orcid", function(x) standardGeneric("orcid"))
 
 #' created
 #'
@@ -195,6 +225,26 @@ setGeneric("content_key", function(x) standardGeneric("content_key"))
 #' @export
 setGeneric("identifier<-", function(x, value) standardGeneric("identifier<-"))
 
+#' short identifier
+#'
+#' Set the minid short identifier
+#'
+#' @param x minid object
+#' @param value the new short identifier string
+#'
+#' @return The minid object with specified short identifier string
+#'
+#' @examples
+#' \dontrun{
+#' short_identifier(minid_object) <- "minid:b9j69h"
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("short_identifier<-", function(x, value) {
+  standardGeneric("short_identifier<-")
+  })
+
 #' creator
 #'
 #' Set the minid creator
@@ -212,6 +262,19 @@ setGeneric("identifier<-", function(x, value) standardGeneric("identifier<-"))
 #' @import methods
 #' @export
 setGeneric("creator<-", function(x, value) standardGeneric("creator<-"))
+
+#' orcid
+#'
+#' Set the minid or configuration orcid
+#'
+#' @param x minid or configuration object
+#' @param value the new orcid string
+#'
+#' @return The minid or configuration object with specified orcid string
+#'
+#' @import methods
+#' @export
+setGeneric("orcid<-", function(x, value) standardGeneric("orcid<-"))
 
 #' created
 #'
@@ -318,8 +381,10 @@ setGeneric("locations<-", function(x, value) standardGeneric("locations<-"))
 #' @examples
 #' \dontrun{
 #' title_list <-
-#'   list(paste0("mdarcy - AGR Data set with identifier-based references to ",
-#'     "data in cloud storage"))
+#'   list(list(created = "Mon, 19 Mar 2018 17:43:57 GMT",
+#'     creator = "mdarcy",
+#'     title = paste0("AGR Data set with identifier-based references to",
+#'               "data in cloud storage")))
 #' titles(minid_object) <- title_list
 #' }
 #'
@@ -424,25 +489,6 @@ setGeneric("user", function(x) standardGeneric("user"))
 #' @export
 setGeneric("email", function(x) standardGeneric("email"))
 
-#' orcid
-#'
-#' Get the orcid from the configuration object
-#'
-#' @param x configuration object
-#'
-#' @usage orcid(x)
-#'
-#' @return The orcid
-#'
-#' @examples
-#' \dontrun{
-#' orcid(configuration_object)
-#' }
-#'
-#' @import methods
-#' @export
-setGeneric("orcid", function(x) standardGeneric("orcid"))
-
 #' code
 #'
 #' Get the code from the configuration object
@@ -518,24 +564,6 @@ setGeneric("user<-", function(x, value) standardGeneric("user<-"))
 #' @export
 setGeneric("email<-", function(x, value) standardGeneric("email<-"))
 
-#' orcid
-#'
-#' Set the minid user's orcid in configuration object
-#'
-#' @param x configuration object
-#' @param value the new user orcid string
-#'
-#' @return The configuration object with specified user orcid string
-#'
-#' @examples
-#' \dontrun{
-#' orcid(configuration_object) <- "0000-0003-2898-9044"
-#' }
-#'
-#' @import methods
-#' @export
-setGeneric("orcid<-", function(x, value) standardGeneric("orcid<-"))
-
 #' code
 #'
 #' Set the minid user's access code
@@ -553,29 +581,5 @@ setGeneric("orcid<-", function(x, value) standardGeneric("orcid<-"))
 #' @import methods
 #' @export
 setGeneric("code<-", function(x, value) standardGeneric("code<-"))
-
-# load config ---------------------------
-
-# save config ---------------------------
-
-# resolve minid  ------------------------
-#' lookup
-#'
-#' Get a minid by identifier
-#'
-#' @param x minid idenentifier (e.g. ark:/57799/b9j69h)
-#'
-#' @usage lookup(x)
-#'
-#' @return A minid object with filled slots
-#'
-#' @examples
-#' \dontrun{
-#' my_minid <- lookup("ark:/57799/b9j69h")
-#' }
-#'
-#' @import methods
-#' @export
-setGeneric("lookup", function(x) standardGeneric("lookup"))
 
 # register user ----------------------------

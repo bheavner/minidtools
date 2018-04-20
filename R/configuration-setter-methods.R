@@ -34,7 +34,10 @@ setReplaceMethod("email", "configuration",
                    })
 
 #' @describeIn orcid setter method for the orcid slot
-#' @param value the new orcid string
+#' @examples
+#' \dontrun{
+#' orcid(configuration_object) <- "0000-0003-2898-9044"
+#' }
 #' @import methods
 setReplaceMethod("orcid", "configuration",
                  function(x, value) {

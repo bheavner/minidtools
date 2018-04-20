@@ -12,9 +12,11 @@ Suggests: testthat,
     covr
 Imports:
     config,
+    digest,
     httr,
     jsonlite,
-    methods
+    methods,
+    stringr
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
@@ -23,7 +25,6 @@ Collate:
     'configuration-getter-methods.R'
     'configuration-setter-methods.R'
     'minid-getter-methods.R'
-    'minid-lookup-methods.R'
     'minid-setter-methods.R'
     'minidtools.R'
     'show-methods.R'

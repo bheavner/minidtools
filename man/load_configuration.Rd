@@ -14,6 +14,9 @@ load_configuration(config_file = "~/.minid/minid-config.json",
 \item{section}{if multiple sections in the config file, which one to use
 (default "default")}
 }
+\value{
+An object of type "configuration"
+}
 \description{
 Before using the minid API to mint a new minid, you first need to validate
 your email address (using register_user()). Following registration, a unique

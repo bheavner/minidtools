@@ -13,8 +13,14 @@ An S4 class to represent a minid.
 \item{\code{identifier}}{a character string containing the minid
 (e.g. ark:/99999/fk4mp58v5t)}
 
-\item{\code{creator}}{a character string giving the name (and, optionally, ORCID) of
-the person who registered the minid (e.g. "mdarcy (<id string>)")}
+\item{\code{short_identifier}}{a character string containing the short form minid
+(e.g. minid:fk4mp58v5t)}
+
+\item{\code{creator}}{a character string giving the name of the person who
+registered the minid (e.g. "mdarcy")}
+
+\item{\code{orcid}}{a character string giving the ORCID of the person who registered
+the minid}
 
 \item{\code{created}}{a character string giving the date and time the minid was
 created (e.g. "Mon, 19 Mar 2018 17:43:57 GMT")}

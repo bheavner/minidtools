@@ -1,5 +1,5 @@
 demo_config <- configuration(
-  server = "http://minid.bd2k.org/minid",
+  server = "http://minid.bd2k.org/",
   user = "Jane Smith",
   email = "jsmith@example.com",
   orcid = "0000-0003-2898-9044",
