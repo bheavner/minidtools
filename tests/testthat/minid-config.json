@@ -5,8 +5,6 @@
                 "email": "jsmith@example.com",
                 "orcid": "0000-0003-2898-9044",
                 "code": "XXXX-XXX-XXXXX-XXXX-XXXX"
-        },
-        "test": {
-                "username": "Test User"
         }
 }
+
