@@ -11,11 +11,13 @@ RoxygenNote: 6.0.1
 Suggests: testthat,
     covr
 Imports:
-    config,
+    configr,
     digest,
     httr,
     jsonlite,
     methods,
+    readr,
+    stats,
     stringr
 Collate: 
     'AllClasses.R'

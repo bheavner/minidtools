@@ -4,15 +4,11 @@
 \alias{load_configuration}
 \title{Load minid configuration object from config file}
 \usage{
-load_configuration(config_file = "~/.minid/minid-config.json",
-  section = "default")
+load_configuration(config_file = "~/.minid/minid-config.json")
 }
 \arguments{
 \item{config_file}{Path to the configuration file (default
 "~/.minid/minid-config.json")}
-
-\item{section}{if multiple sections in the config file, which one to use
-(default "default")}
 }
 \value{
 An object of type "configuration"
@@ -27,15 +23,14 @@ with your email address when accessing the API.
 As a convenience you can specify this information in a minid configuration
 file (default location is ~/.minid/minid-config.json).
 
-\code{load_configuration()} loads the json-formatted config file and returns
-a configuration object.
+\code{load_configuration()} loads the json- or python-style config file and
+returns a configuration object.
 }
 \examples{
 \dontrun{
 
 configuration <-
-  load_configuration(config_file = "~/.minid/minid-config.json",
-                     section = "default")
+  load_configuration(config_file = "~/.minid/minid-config.json")
 }
 
 }
