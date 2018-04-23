@@ -3,7 +3,7 @@ Title: Working with the BD2K Minimal Viable Identifier
 Version: 0.0.0.9001
 Authors@R: person("Ben", "Heavner", email = "bheavner@uw.edu", role = c("aut", "cre"))
 Description: The minidtools package facilitates working with globally unique digital object identifiers within R. It is intended to support minting new identifiers, retrieving metadata about a file or identifier, or updating metadata about an identifier.
-Depends: R (>= 3.4.2)
+Depends: R (>= 3.4.1)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
