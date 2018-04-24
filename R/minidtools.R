@@ -175,6 +175,11 @@ save_configuration <-
                             "/.minid/minid-config.json") #nolint
     }
 
+    if (config_path == "~/.minid/minid-config.cfg") { #nolint
+      config_file <- paste0(path.expand("~"),
+                            "/.minid/minid-config.cfg") #nolint
+    }
+
     if (file.exists(config_path) & overwrite == FALSE) {
       stop("Config file already exists. Set overwrite = TRUE to overwrite")
     }
