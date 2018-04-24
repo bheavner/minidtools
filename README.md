@@ -38,10 +38,10 @@ get_location("minid:b94t3q")
 
 * Get title of digital object from minid
 ```
-get_title("ark:/57799/b9j69h"")
+get_title("ark:/57799/b9j69h")
 ```
 
-* Get newer minid for minids that have status = TOMBSTONED
+* Get newer minid for minids that have `status = TOMBSTONED`
 ```
 get_newer("minid:b94t3q")
 ```

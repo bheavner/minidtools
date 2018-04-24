@@ -258,7 +258,7 @@ lookup <- function(query, server = "http://minid.bd2k.org/minid", algo = "md5"){
   # do checksum-based lookup for file:
   if (stringr::str_detect(query, "^file:")) {
     path <- stringr::str_remove(query, "^file:")
-    checksum <- digest::digest(file = path, algo)
+    checksum <- digest::digest(path, file = TRUE, algo)
     # set url for hash lookup
     url <- paste0(server_url, "/", checksum)
   # do id-based lookup for minid:
