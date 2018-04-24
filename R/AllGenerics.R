@@ -583,7 +583,7 @@ setGeneric("email<-", function(x, value) standardGeneric("email<-"))
 setGeneric("code<-", function(x, value) standardGeneric("code<-"))
 
 # list resolution tools ----------------------------
-#' location
+#' get_location
 #'
 #' Get the nth location of an object with given minid
 #'
@@ -596,17 +596,17 @@ setGeneric("code<-", function(x, value) standardGeneric("code<-"))
 #'
 #' @examples
 #' \dontrun{
-#' location(minid = "minid:b94t3q", n = 1, server = server(configuration))
+#' get_location(minid = "minid:b94t3q", n = 1, server = server(configuration))
 #' }
 #'
 #' @import methods
 #' @export
-setGeneric("location",
+setGeneric("get_location",
            function(minid, n = 1, server = "http://minid.bd2k.org/minid") {
-             standardGeneric("location")
+             standardGeneric("get_location")
              })
 
-#' newer
+#' get_newer
 #'
 #' Get nth entry of obsoleted_by minid field. If minid status = ACTIVE, returns
 #' minid identifier
@@ -620,17 +620,17 @@ setGeneric("location",
 #'
 #' @examples
 #' \dontrun{
-#' newer(minid = "minid:b94t3q", n = 1, server = server(configuration))
+#' get_newer(minid = "minid:b94t3q", n = 1, server = server(configuration))
 #' }
 #'
 #' @import methods
 #' @export
-setGeneric("newer",
+setGeneric("get_newer",
            function(minid, n = 1, server = "http://minid.bd2k.org/minid") {
-             standardGeneric("newer")
+             standardGeneric("get_newer")
            })
 
-#' title
+#' get_title
 #'
 #' Get nth entry of title minid field.
 #'
@@ -642,12 +642,12 @@ setGeneric("newer",
 #'
 #' @examples
 #' \dontrun{
-#' title(minid = "minid:b94t3q", n = 1, server = server(configuration))
+#' get_title(minid = "minid:b94t3q", n = 1, server = server(configuration))
 #' }
 #'
 #' @import methods
 #' @export
-setGeneric("title",
+setGeneric("get_title",
            function(minid, n = 1, server = "http://minid.bd2k.org/minid") {
-             standardGeneric("title")
+             standardGeneric("get_title")
            })

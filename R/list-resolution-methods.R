@@ -4,9 +4,9 @@
 NULL
 
 # location ----------------------
-#' @describeIn location return the nth location from a minid object
+#' @describeIn get_location return the nth location from a minid object
 #' @import methods
-setMethod("location", "minid",
+setMethod("get_location", "minid",
           function(minid, n = 1, server = NULL) {
             if (status(minid) == "TOMBSTONE") {
               message('This minid has status "TOMBSTONE"')
@@ -15,9 +15,9 @@ setMethod("location", "minid",
             }
           )
 
-#' @describeIn location do lookup() on minid string and return nth location
+#' @describeIn get_location do lookup() on minid string and return nth location
 #' @import methods
-setMethod("location", "character",
+setMethod("get_location", "character",
           function(minid, n = 1, server = "http://minid.bd2k.org/minid") {
             if (!(stringr::str_detect(minid, "(^ark)|(^minid)"))) {
               msg <- paste0("query must be a minid of the form ",
@@ -33,10 +33,10 @@ setMethod("location", "character",
 )
 
 # newer ---------------------------------
-#' @describeIn newer return the nth entry of obsoleted_by minid field. If minid
-#'   status = ACTIVE, returns minid identifier.
+#' @describeIn get_newer return the nth entry of obsoleted_by minid field. If
+#'   minid status = ACTIVE, returns minid identifier.
 #' @import methods
-setMethod("newer", "minid",
+setMethod("get_newer", "minid",
           function(minid, n = 1, server = NULL) {
             if (status(minid) == "ACTIVE") {
               return(identifier(minid))
@@ -48,12 +48,12 @@ setMethod("newer", "minid",
           }
 )
 
-#' @describeIn newer do lookup() on minid string and return nth entry of
+#' @describeIn get_newer do lookup() on minid string and return nth entry of
 #'   obsoleted_by minid field. If minid status = ACTIVE, returns minid
 #'   identifier
 #'
 #' @import methods
-setMethod("newer", "character",
+setMethod("get_newer", "character",
           function(minid, n = 1, server = "http://minid.bd2k.org/minid") {
             if (!(stringr::str_detect(minid, "(^ark)|(^minid)"))) {
               msg <- paste0("query must be a minid of the form ",
@@ -72,9 +72,9 @@ setMethod("newer", "character",
 )
 
 # title ----------------------
-#' @describeIn title return the nth title from a minid object
+#' @describeIn get_title return the nth title from a minid object
 #' @import methods
-setMethod("title", "minid",
+setMethod("get_title", "minid",
           function(minid, n = 1, server = NULL) {
             if (status(minid) == "TOMBSTONE") {
               message('This minid has status "TOMBSTONE"')
@@ -83,9 +83,9 @@ setMethod("title", "minid",
           }
 )
 
-#' @describeIn location do lookup() on minid string and return nth location
+#' @describeIn get_title do lookup() on minid string and return nth title
 #' @import methods
-setMethod("title", "character",
+setMethod("get_title", "character",
           function(minid, n = 1, server = "http://minid.bd2k.org/minid") {
             if (!(stringr::str_detect(minid, "(^ark)|(^minid)"))) {
               msg <- paste0("query must be a minid of the form ",
