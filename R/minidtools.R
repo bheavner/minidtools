@@ -96,7 +96,7 @@ load_configuration <-
       return(config)
     # if config file is python-style text
     } else if (
-      stringr::str_detect(readr::read_file(config_file), "[general]")
+      stringr::str_detect(readr::read_file(config_file), "\\[general\\]")
       ) {
       raw_config <- readr::read_file(config_file)
       test <- readr::read_delim(
@@ -301,6 +301,9 @@ lookup <- function(query, server = "http://minid.bd2k.org/minid", algo = "md5"){
   new_minid <- minid()
 
   # fill minid slots NOTE: assumes API only returns one minid per query
+  if (length(parsed) == 0) {
+    stop("No results for that query.")
+  }
   parsed <- parsed[[1]]
 
   checksum(new_minid) <- as.character(parsed$checksum)
