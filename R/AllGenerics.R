@@ -582,4 +582,72 @@ setGeneric("email<-", function(x, value) standardGeneric("email<-"))
 #' @export
 setGeneric("code<-", function(x, value) standardGeneric("code<-"))
 
-# register user ----------------------------
+# list resolution tools ----------------------------
+#' location
+#'
+#' Get the nth location of an object with given minid
+#'
+#' @param minid minid object or identifier to resolve
+#' @param n index of desired location (default 1)
+#' @param server server string
+#'
+#' @return The nth location of the identified digital object, and warning if
+#'   minid is obsolete
+#'
+#' @examples
+#' \dontrun{
+#' location(minid = "minid:b94t3q", n = 1, server = server(configuration))
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("location",
+           function(minid, n = 1, server = "http://minid.bd2k.org/minid") {
+             standardGeneric("location")
+             })
+
+#' newer
+#'
+#' Get nth entry of obsoleted_by minid field. If minid status = ACTIVE, returns
+#' minid identifier
+#'
+#' @param minid minid object or identifier to resolve
+#' @param n index of obsoleted_by minid
+#' @param server server string
+#'
+#' @return if minid status = TOMBSTONE, the nth entry of the minid obsoleted_by
+#'         field. If minid status = ACTIVE, the minid's identifier.
+#'
+#' @examples
+#' \dontrun{
+#' newer(minid = "minid:b94t3q", n = 1, server = server(configuration))
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("newer",
+           function(minid, n = 1, server = "http://minid.bd2k.org/minid") {
+             standardGeneric("newer")
+           })
+
+#' title
+#'
+#' Get nth entry of title minid field.
+#'
+#' @param minid minid object or identifier to resolve
+#' @param n index of obsoleted_by minid
+#' @param server server string
+#'
+#' @return the nth entry of title minid field.
+#'
+#' @examples
+#' \dontrun{
+#' title(minid = "minid:b94t3q", n = 1, server = server(configuration))
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("title",
+           function(minid, n = 1, server = "http://minid.bd2k.org/minid") {
+             standardGeneric("title")
+           })

@@ -26,6 +26,7 @@ Collate:
     'coercion-methods.R'
     'configuration-getter-methods.R'
     'configuration-setter-methods.R'
+    'list-resolution-methods.R'
     'minid-getter-methods.R'
     'minid-setter-methods.R'
     'minidtools.R'

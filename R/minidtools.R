@@ -230,25 +230,26 @@ save_configuration <-
 #' @param algo the hashing algorighm to use for file-based minid lookups
 #'   (default "md5")
 #'
-#' @param configuration the configuration object. Default = config (see also
-#'   \code{\link{load_configuration}})
+#' @param server the minid resolution server. Can be obtained from
+#'   configuration object with server(config). Default =
+#'   "http://minid.bd2k.org/minid" (see also \code{\link{load_configuration}})
 #'
 #' @return An object of type "minid" or an error if the lookup fails
 #'
 #' @examples
 #' \dontrun{
 #'
-#' my_minid <- lookup(query = "ark:/57799/b9j69h", configuration = config)
-#' my_minid <- lookup(query = "minid:b9j69h", configuration = config)
+#' my_minid <- lookup(query = "ark:/57799/b9j69h", server = server(config))
+#' my_minid <- lookup(query = "minid:b9j69h", server = server(config))
 #' my_minid <- lookup(query = "file:./some/file.RDa", algo = "md5",
-#'                    configuration = config)
+#'                    server = server(config))
 #'
 #' }
 #'
 #' @export
 
-lookup <- function(query, configuration = config, algo = "md5"){
-  server_url <- server(configuration)
+lookup <- function(query, server = "http://minid.bd2k.org/minid", algo = "md5"){
+  server_url <- server
   # do checksum-based lookup for file:
   if (stringr::str_detect(query, "^file:")) {
     path <- stringr::str_remove(query, "^file:")
