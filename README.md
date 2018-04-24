@@ -4,11 +4,9 @@
 | Test Coverage | [![Coverage Status](https://img.shields.io/codecov/c/github/bheavner/minidtools/master.svg)](https://codecov.io/github/bheavner/minidtools?branch=master) | [![Coverage Status](https://img.shields.io/codecov/c/github/bheavner/minidtools/develop.svg)](https://codecov.io/github/bheavner/minidtools?branch=develop) |
 
 # minidtools
-A [minid server](https://github.com/ini-bdds/minid-server) API client in R 
-page form. There's a [python client](https://github.com/fair-research/minid),
-too.
-
-## Minimal Viable Identifier Client
+An R API client for the 
+[minid server](https://github.com/ini-bdds/minid-server). There's a 
+[python client](https://github.com/fair-research/minid), too.
 
 A minid (Minimal Viable Identifier) is an identifier that is sufficiently
 simple to make creation and use trivial, while still having enough substance to
@@ -22,7 +20,7 @@ minid, including resolving locations for the digital object a minid identifies.
 Tools for minting your own minids for digital objects are high on the to-do
 list.
 
-### Installation ###
+## Installation ##
 
 You can install minidtools from github with:
 
@@ -31,9 +29,50 @@ You can install minidtools from github with:
 devtools::install_github("bheavner/minidtools")
 ```
 
-### Usage ###
+## Quick Usage ##
+### Resolve Minid ###
+* Get location of digital object from a minid
+```
+get_location("minid:b94t3q")
+```
 
-#### Resolution and lookup functions ####
+* Get title of digital object from minid
+```
+get_title("ark:/57799/b9j69h"")
+```
+
+* Get newer minid for minids that have status = TOMBSTONED
+```
+get_newer("minid:b94t3q")
+```
+
+* Get all metadata for minid
+```
+lookup("minid:b94t3q")
+```
+
+* get minid for file using checksum
+```
+lookup("fe1d7fc641ae2befae2b7c2a989019553b22e21cdda7b9d6054617921b821613")
+```
+
+### Register User ###
+* coming soon
+
+### Load Configuration from file ###
+```
+load_configuration()
+```
+
+### Mint Minid ###
+* coming soon
+
+### Edit Minid ###
+* coming soon
+
+## Expanded Usage ##
+
+### Resolution and lookup functions ###
 * Retrieve all metadata for a minid or local file that has been registered
 ```
 my_minid <- lookup(query = "ark:/57799/b9j69h", 
@@ -114,7 +153,7 @@ get_newer(minid = "minid:b94t3q", n = 1, server = server(configuration))
 get_newer(my_minid)
 ```
 
-#### User registration and configuration ####
+### User registration and configuration ###
 Before using the minid API to register or update minids, you need to validate
 your email address. *function to come soon*. When you register, the minid
 server will send a unique code to your email address. You must present this code
@@ -188,9 +227,9 @@ code(config)
 
 * more coming soon
 
-#### Creating and revising minids ####
+### Creating and revising minids ###
 * coming soon
 
-### More information ###
+## More information ##
 More information about the project can be found at: 
 [http://minid.bd2k.org/](http://minid.bd2k.org/)
