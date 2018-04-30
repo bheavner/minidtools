@@ -51,13 +51,24 @@ get_newer("minid:b94t3q")
 lookup("minid:b94t3q")
 ```
 
-* get minid for file using checksum
+* get minid for file that has an identifier (e.g. a file you've downloaded after
+ resolving a minid)
 ```
-lookup("fe1d7fc641ae2befae2b7c2a989019553b22e21cdda7b9d6054617921b821613")
+lookup("file:./somefile.RDa", algo = "sha256")
 ```
 
 ### Register User ###
-* coming soon
+```
+config <- configuration()
+user(config) <- "Jane Example"
+email(config) <- "jexample@example.com"
+orcid(config) <- "0000-0000-0000-0000" # see https://orcid.org/
+register(config)
+
+# check email to get code, then add it to the config object
+code(config) <- "0000000-0000-0000-0000-000000000000"
+save_configuration(config)
+```
 
 ### Load Configuration from file ###
 ```
@@ -154,14 +165,26 @@ get_newer(my_minid)
 ```
 
 ### User registration and configuration ###
-Before using the minid API to register or update minids, you need to validate
-your email address. *function to come soon*. When you register, the minid
-server will send a unique code to your email address. You must present this code
-along with your email address when minting or updating minids.
-As a convenience, you can specify the server, user name, email, orcid, and your
-unique code in a minid configuration file in either a python config-style or
+Before using the minid API to mint or edit minids, you need to validate
+your email address. You can do this with the `register()` function. When you
+register, the minid server will send a unique code to your email address. You
+must present this code along with your email address when minting or updating
+minids.
+
+The `register()` function takes a `configuration` object as it's argument.
+Users can build a configuration object manually, e.g.
+```
+config <- configuration()
+user(config) <- "Jane Example"
+email(config) <- "jexample@example.com"
+orcid(config) <- "0000-0000-0000-0000" # see https://orcid.org/
+```
+
+As a convenience, users can also save the configuration object (including the
+registration code, specified with `code(config)`) in a minid configuration file.
+The minid configuration file can be formatted either as a python config-style or
 JSON config file (default paths are `~/.minid/minid-config.cfg` and 
-`~/.minid/minid-config.json`)
+`~/.minid/minid-config.json`, respectively.)
 
 These files look like this:
 `minid-config.cfg`:
@@ -225,9 +248,10 @@ orcid(config)
 code(config)
 ```
 
-* more coming soon
+### Creating minids ###
+* coming soon
 
-### Creating and revising minids ###
+### Revising minids ###
 * coming soon
 
 ## More information ##
