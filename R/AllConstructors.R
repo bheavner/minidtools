@@ -124,7 +124,7 @@ minid <-
 #' @import methods
 #' @export
 configuration <-
-  function(server = vector(mode = "character"),
+  function(server = "http://minid.bd2k.org/minid",
            user = vector(mode = "character"),
            email = vector(mode = "character"),
            orcid = vector(mode = "character"),

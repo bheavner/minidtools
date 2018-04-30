@@ -89,7 +89,7 @@ load_configuration <-
 
       # populate configuration slots
       server(config) <- json_configuration$minid_server[[1]]
-      user(config) <- json_configuration$username[[1]]
+      user(config) <- json_configuration$user[[1]]
       email(config) <- json_configuration$email[[1]]
       orcid(config) <- json_configuration$orcid[[1]]
       code(config) <- json_configuration$code[[1]]
@@ -203,7 +203,7 @@ save_configuration <-
 
       readr::write_file(save_string, config_path)
 
-      return()
+      invisible(return())
     }
 
     # else write json (default)
@@ -214,8 +214,10 @@ save_configuration <-
         "minid_server"
         )[[1]]
 
+    save_string <- paste0(save_string, "\n")
+
     readr::write_file(save_string, config_path)
-    return()
+    invisible(return())
     }
 
 # minid functions --------------------------
@@ -376,6 +378,75 @@ lookup <- function(query, server = "http://minid.bd2k.org/minid", algo = "md5"){
   new_minid
 }
 
+
+# user functions --------------------------
+
+#' Register a user
+#'
+#' Before using the API to mint or edit a minid, you first need to validate
+#' your email address. When you register with register(), the server will send
+#' a private code to the email address provided. This code must be supplied for
+#' registering or editing minids. For convienece, this code can
+#' be added to the config object and saved for future sessions.
+#'
+#' @param config a configuration object with server, user and email slots
+#' filled (mandatory) along with the orcid slot (optional)
+#'
+#' @return An object of type "minid" or an error if the lookup fails
+#'
+#' @examples
+#' \dontrun{
+#'
+#' config <- configuration()
+#' user(config) <- "Jane Example"
+#' email(config) <- "jexample@example.com"
+#' orcid(config) <- "0000-0000-0000-0000" # see https://orcid.org/
+#' register(config)
+#'
+#' # then get code from email
+#' code(config) <- "0000000-0000-0000-0000-000000000000"
+#' save_configuration(config)
+#'
+#' }
+#'
+#' @export
+
+register <- function(config = config){
+  server_url <- paste0(server(config), "/", "user")
+
+  # set user agent
+  ua <- httr::user_agent("https://github.com/bheavner/minidtools")
+
+  # set request body
+  request_body <- list(email = email(config),
+                       name = user(config),
+                       orcid = orcid(config))
+
+  # send request
+  resp <- httr::POST(server_url, body = request_body, encode = "json", ua)
+
+  # check for JSON response
+  if (httr::http_type(resp) != "application/json") {
+    stop("API did not return json", call. = FALSE)
+  }
+
+  # parse json
+  parsed <- jsonlite::fromJSON(httr::content(resp, "text", encoding = "UTF-8"),
+                               simplifyVector = FALSE)
+
+  # catch errors
+  if (httr::http_error(resp)) {
+    stop(
+      sprintf(
+        "BD2K minid API request failed [%s]\n%s\n<%s>",
+        httr::status_code(resp),
+        parsed$message,
+        parsed$documentation_url
+      ),
+      call. = FALSE
+    )
+  }
+}
 
 # misc utility functions --------------------------------------
 #' hack to pass devtools::check()
