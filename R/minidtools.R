@@ -203,7 +203,7 @@ save_configuration <-
 
       readr::write_file(save_string, config_path)
 
-      return()
+      invisible(return())
     }
 
     # else write json (default)
@@ -215,7 +215,7 @@ save_configuration <-
         )[[1]]
 
     readr::write_file(save_string, config_path)
-    return()
+    invisible(return())
     }
 
 # minid functions --------------------------

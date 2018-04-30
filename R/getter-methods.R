@@ -72,4 +72,3 @@ setMethod("orcid", "configuration", function(x) x@orcid)
 #' @describeIn code getter method for the code slot
 #' @import methods
 setMethod("code", "configuration", function(x) x@code)
-
