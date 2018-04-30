@@ -13,7 +13,7 @@ test_that("save_configuration() writes expected JSON", {
                         'bd2k.org/minid"],"user":["Jane Smith"],"email":',
                         '["jsmith@example.com"],"orcid":',
                         '["0000-0003-2898-9044"],',
-                        '"code":["XXXX-XXX-XXXXX-XXXX-XXXX"]}}')
+                        '"code":["XXXX-XXX-XXXXX-XXXX-XXXX"]}}\n')
   expect_identical(readr::read_file("./test_save.json"), target_json)
 })
 

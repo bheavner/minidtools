@@ -14,12 +14,12 @@ setValidity("minid",
             function(object){
               if (!(is.character(identifier(object)) |
                    is.null(identifier(object)))) {
-                return("'identifier' slot must be a character string or NULL")
+                return("'identifier' slot must be a character string")
               }
               if (!(is.character(short_identifier(object)) |
                     is.null(short_identifier(object)))) {
                 return(paste0("'short_identifier' slot must be a character",
-                              " string or NULL"))
+                              " string"))
               }
               if (!is.character(creator(object))) {
                 return("'creator' slot must be a character string")
@@ -32,18 +32,18 @@ setValidity("minid",
               }
               if (!(is.character(checksum(object)) |
                    is.null(checksum(object)))) {
-                return("'checksum' slot must be a character string or NULL")
+                return("'checksum' slot must be a character string")
               }
               if (!(is.character(checksum_function(object)) |
                    is.null(checksum_function(object)))) {
                 msg <- paste0("'checksum_function' slot must be a character ",
-                              "string or NULL")
+                              "string")
                 return(msg)
               }
               # add check below
               if (!(is.character(status(object)) |
                    is.null(status(object)))) {
-                return("'status' slot must be a character string or NULL")
+                return("'status' slot must be a character string")
               }
               # add to list check below
               if (!is.list(locations(object))) {
@@ -78,7 +78,7 @@ setValidity("configuration",
             function(object){
               if (!(is.character(server(object)) |
                     is.null(server(object)))) {
-                return("'server' slot must be a character string or NULL")
+                return("'server' slot must be a character string")
               }
               if (!is.character(user(object))) {
                 return("'user' slot must be a character string")
@@ -88,12 +88,11 @@ setValidity("configuration",
               }
               if (!(is.character(orcid(object)) |
                     is.null(orcid(object)))) {
-                return("'orcid' slot must be a character string or NULL")
+                return("'orcid' slot must be a character string")
               }
               if (!(is.character(code(object)) |
                     is.null(code(object)))) {
-                msg <- paste0("'code' slot must be a character ",
-                              "string or NULL")
+                msg <- paste0("'code' slot must be a character string")
                 return(msg)
               }
             }

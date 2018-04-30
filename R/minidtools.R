@@ -214,6 +214,8 @@ save_configuration <-
         "minid_server"
         )[[1]]
 
+    save_string <- paste0(save_string, "\n")
+
     readr::write_file(save_string, config_path)
     invisible(return())
     }
