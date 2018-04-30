@@ -4,7 +4,7 @@
 \alias{configuration}
 \title{Create an instance of the configuration class}
 \usage{
-configuration(server = vector(mode = "character"), user = vector(mode =
+configuration(server = "http://minid.bd2k.org/minid", user = vector(mode =
   "character"), email = vector(mode = "character"), orcid = vector(mode =
   "character"), code = vector(mode = "character"))
 }
