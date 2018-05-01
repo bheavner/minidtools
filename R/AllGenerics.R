@@ -657,7 +657,7 @@ setGeneric("get_title",
 #'
 #' mint a new minid for a digital object
 #'
-#' @param minid minid object or list of fields for minting new minid
+#' @param minid minid object or list of fields or file path
 #' @param configuration configuration object or list of server parameters
 #' @param test creates names in a test namespace that is removed periodically
 #'   default = TRUE
@@ -669,6 +669,9 @@ setGeneric("get_title",
 #' # load config
 #' config <- load_configuration()
 #'
+#' # mint minid from file path
+#' mint(minid = "./a_file.RDa", configuration = config, test = TRUE)
+#'
 #' # or manually set up config
 #' config <- configuration()
 #' user(config) <- "Jane Example"
@@ -679,7 +682,7 @@ setGeneric("get_title",
 #' # set up minid object
 #' new_minid <- minid()
 #' checksum_function(new_minid) <- "sha256"
-#' checksum(new_minid) <- digest::digest(path = "./somefile.RDa",
+#' checksum(new_minid) <- digest::digest("./somefile.RDa",
 #'                                       file = TRUE,
 #'                                       algo = "sha256")
 #' titles(new_minid) <- list(title = "An Example Object Title")

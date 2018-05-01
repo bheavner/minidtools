@@ -72,11 +72,13 @@ save_configuration(config)
 
 ### Load Configuration from file ###
 ```
-load_configuration()
+config <- load_configuration()
 ```
 
 ### Mint Minid ###
-* coming soon
+```
+mint(minid = "./someFile.RDa", config)
+```
 
 ### Edit Minid ###
 * coming soon
@@ -249,7 +251,61 @@ code(config)
 ```
 
 ### Creating minids ###
-* coming soon
+* mint minid from a file path (note: will need to add location(s) subsequently)
+```
+config <- load_configuration()
+mint(minid = "./a_file.RDa", configuration = config, test = TRUE)
+```
+
+* mint minid from configuration and minid objects
+```
+# set up new configuration object
+config <- configuration()
+user(config) <- "Jane Example"
+email(config) <- "jexample@example.com"
+orcid(config) <- "0000-0000-0000-0000" # see http://orch.id
+code(config) <- "00000000-0000-0000-0000-000000000000" # see register()
+
+# set up minid object
+new_minid <- minid()
+checksum_function(new_minid) <- "sha256"
+checksum(new_minid) <- digest::digest("./somefile.RDa",
+                                      file = TRUE,
+                                       algo = "sha256")
+titles(new_minid) <- list(title = "An Example Object Title")
+locations(new_minid) <- list(link = "http://example.com/somefile.RDa") # optional
+
+# mint the new minid
+mint(minid = new_minid, configuration = config, test = TRUE)
+```
+
+* mint minid from named lists
+```
+computed_checksum <- digest::digest("./somefile.RDa",
+                                    file = TRUE,
+                                    algo = "sha256")
+new_minid = list(
+  checksum_function = "sha256",
+  checksum = computed_checksum,
+  titles = "An Example Object Title",
+  locations = "http://example.com/somefile.RDa")
+
+configuration = list(
+  server = "http://minid.bd2k.org/minid",
+  user(config) <- "Jane Example"
+  email(config) <- "jexample@example.com"
+  orcid(config) <- "0000-0000-0000-0000", # see http://orch.id
+  code(config) <- "00000000-0000-0000-0000-000000000000" # see register()
+  )
+  
+minted <- mint(minid = new_minid, configuration = config, test = TRUE)
+```
+or
+```
+minid_list <- as.list(minid)
+config_list <- as.list(config)
+minted <- mint(minid = minid_list, configuration = config_list, test = TRUE)
+```
 
 ### Revising minids ###
 * coming soon

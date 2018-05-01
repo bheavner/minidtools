@@ -4,14 +4,26 @@
 \name{mint}
 \alias{mint}
 \alias{mint,minid,configuration-method}
+\alias{mint,list,list-method}
+\alias{mint,minid,list-method}
+\alias{mint,list,configuration-method}
+\alias{mint,character,configuration-method}
 \title{mint}
 \usage{
 mint(minid, configuration, test = TRUE)
 
 \S4method{mint}{minid,configuration}(minid, configuration, test = TRUE)
+
+\S4method{mint}{list,list}(minid, configuration, test = TRUE)
+
+\S4method{mint}{minid,list}(minid, configuration, test = TRUE)
+
+\S4method{mint}{list,configuration}(minid, configuration, test = TRUE)
+
+\S4method{mint}{character,configuration}(minid, configuration, test = TRUE)
 }
 \arguments{
-\item{minid}{minid object or list of fields for minting new minid}
+\item{minid}{minid object or list of fields or file path}
 
 \item{configuration}{configuration object or list of server parameters}
 
@@ -27,12 +39,23 @@ mint a new minid for a digital object
 \section{Methods (by class)}{
 \itemize{
 \item \code{minid = minid,configuration = configuration}: mint a new minid from a minid object
+
+\item \code{minid = list,configuration = list}: mint a new minid from two named lists
+
+\item \code{minid = minid,configuration = list}: mint a new minid from a minid and named list
+
+\item \code{minid = list,configuration = configuration}: mint a new minid from a named list and configuration object
+
+\item \code{minid = character,configuration = configuration}: mint a new minid from a file path and configuration object
 }}
 
 \examples{
 \dontrun{
 # load config
 config <- load_configuration()
+
+# mint minid from file path
+mint(minid = "./a_file.RDa", configuration = config, test = TRUE)
 
 # or manually set up config
 config <- configuration()
@@ -44,7 +67,7 @@ code(config) <- "00000000-0000-0000-0000-000000000000" # see register()
 # set up minid object
 new_minid <- minid()
 checksum_function(new_minid) <- "sha256"
-checksum(new_minid) <- digest::digest(path = "./somefile.RDa",
+checksum(new_minid) <- digest::digest("./somefile.RDa",
                                       file = TRUE,
                                       algo = "sha256")
 titles(new_minid) <- list(title = "An Example Object Title")
