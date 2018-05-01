@@ -27,6 +27,7 @@ Collate:
     'getter-methods.R'
     'list-resolution-methods.R'
     'minidtools.R'
+    'minting-methods.R'
     'setter-methods.R'
     'show-methods.R'
     'validity-methods.R'

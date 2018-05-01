@@ -10,9 +10,6 @@ register(config = config)
 \item{config}{a configuration object with server, user and email slots
 filled (mandatory) along with the orcid slot (optional)}
 }
-\value{
-An object of type "minid" or an error if the lookup fails
-}
 \description{
 Before using the API to mint or edit a minid, you first need to validate
 your email address. When you register with register(), the server will send

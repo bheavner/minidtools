@@ -651,3 +651,71 @@ setGeneric("get_title",
            function(minid, n = 1, server = "http://minid.bd2k.org/minid") {
              standardGeneric("get_title")
            })
+
+# minid server tools ------------------------------
+#' mint
+#'
+#' mint a new minid for a digital object
+#'
+#' @param minid minid object or list of fields or file path
+#' @param configuration configuration object or list of server parameters
+#' @param test creates names in a test namespace that is removed periodically
+#'   default = TRUE
+#'
+#' @return a newly minted minid
+#'
+#' @examples
+#' \dontrun{
+#' # load config
+#' config <- load_configuration()
+#'
+#' # mint minid from file path
+#' mint(minid = "./a_file.RDa", configuration = config, test = TRUE)
+#'
+#' # or manually set up config
+#' config <- configuration()
+#' user(config) <- "Jane Example"
+#' email(config) <- "jexample@example.com"
+#' orcid(config) <- "0000-0000-0000-0000" # see http://orch.id
+#' code(config) <- "00000000-0000-0000-0000-000000000000" # see register()
+#'
+#' # set up minid object
+#' new_minid <- minid()
+#' checksum_function(new_minid) <- "sha256"
+#' checksum(new_minid) <- digest::digest("./somefile.RDa",
+#'                                       file = TRUE,
+#'                                       algo = "sha256")
+#' titles(new_minid) <- list(title = "An Example Object Title")
+#' locations(new_minid) <- list(link = "http://example.com/somefile.RDa") # optional
+#'
+#' # mint the new minid
+#' minted <- mint(minid = new_minid, configuration = config, test = TRUE)
+#'
+#' # OR use lists:
+#' computed_checksum <- digest::digest(path = "./somefile.RDa",
+#'                                     file = TRUE,
+#'                                     algo = "sha256")
+#' new_minid = list(
+#'   checksum_function = "sha256",
+#'   checksum = computed_checksum,
+#'   titles = "An Example Object Title",
+#'   locations = "http://example.com/somefile.RDa"
+#'   )
+#'
+#' configuration = list(
+#'   server = "http://minid.bd2k.org/minid",
+#'   user(config) <- "Jane Example"
+#'   email(config) <- "jexample@example.com"
+#'   orcid(config) <- "0000-0000-0000-0000", # see http://orch.id
+#'   code(config) <- "00000000-0000-0000-0000-000000000000" # see register()
+#'   )
+#'
+#' minted <- mint(minid = new_minid, configuration = config, test = TRUE)
+#' }
+#'
+#' @import methods
+#' @export
+setGeneric("mint",
+           function(minid, configuration, test = TRUE) {
+             standardGeneric("mint")
+           })
