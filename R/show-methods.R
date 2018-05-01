@@ -19,21 +19,22 @@ NULL
 #' @export
 setMethod("show", signature = "minid",
           function(object){
-            if (length(locations(object) > 0)){
-              location_str <- locations(object)[[1]]$link
-            } else if (length(locations(object) == 0)) {
+            if (length(locations(object)) == 0) {
               location_str <- ""
+            } else {
+              location_str <- locations(object)[[1]]$link
             }
-            if (length(titles(object) > 0)){
-              title_str <- titles(object)[[1]]$title
-            } else if (length(titles(object) == 0)) {
+            if (length(titles(object)) == 0) {
               title_str <- ""
+            } else {
+              title_str <- titles(object)[[1]]$title
             }
-            if (length(obsoleted_by(object) > 0)){
-              obsoleted_by_str <- obsoleted_by(object)[[1]]
-            } else if (length(obsoleted_by(object) == 0)) {
+            if (length(obsoleted_by(object)) == 0) {
               obsoleted_by_str <- ""
+            } else {
+              obsoleted_by_str <- obsoleted_by(object)[[1]]
             }
+
             string <- paste0(
               "MINID:", "\n",
               "  identifier = ", identifier(object), "\n",

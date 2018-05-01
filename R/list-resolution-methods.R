@@ -8,12 +8,19 @@ NULL
 #' @import methods
 setMethod("get_location", "minid",
           function(minid, n = 1, server = NULL) {
-            if (status(minid) == "TOMBSTONE") {
-              message('This minid has status "TOMBSTONE"')
+            if (length(status(minid)) > 0) {
+              if (status(minid) == "TOMBSTONE") {
+                message('This minid has status "TOMBSTONE"')
+              }
             }
-            locations(minid)[[n]]$link
+
+            if ( length(locations(minid)) == 0){
+              return("")
+            } else {
+              return(locations(minid)[[n]]$link)
             }
-          )
+          }
+)
 
 #' @describeIn get_location do lookup() on minid string and return nth location
 #' @import methods
@@ -25,10 +32,7 @@ setMethod("get_location", "character",
               stop(msg)
             }
             resolved <- lookup(query = minid, server = server)
-            if (status(resolved) == "TOMBSTONE") {
-              message('This minid has status "TOMBSTONE"')
-            }
-            locations(resolved)[[n]]$link
+            get_location(resolved, n)
           }
 )
 
@@ -38,13 +42,21 @@ setMethod("get_location", "character",
 #' @import methods
 setMethod("get_newer", "minid",
           function(minid, n = 1, server = NULL) {
-            if (status(minid) == "ACTIVE") {
-              return(identifier(minid))
-            } else if (status(minid) == "TOMBSTONE") {
-              return(obsoleted_by(minid)[[n]])
-            } else {
-              stop("Unknown minid status.")
+            if (length(status(minid)) > 0) {
+              if (status(minid) == "ACTIVE") {
+                return(identifier(minid))
+              }
+              if (status(minid) == "TOMBSTONE") {
+                if ( length(obsoleted_by(minid)) == 0){
+                  return(identifier(minid))
+                  }
+                return(obsoleted_by(minid)[[n]])
+                }
+              else {
+                stop("Unknown minid status.")
+              }
             }
+            return(identifier(minid))
           }
 )
 
@@ -61,13 +73,7 @@ setMethod("get_newer", "character",
               stop(msg)
             }
             resolved <- lookup(query = minid, server = server)
-            if (status(resolved) == "ACTIVE") {
-              return(identifier(resolved))
-            } else if (status(resolved) == "TOMBSTONE") {
-              return(obsoleted_by(resolved)[[n]])
-            } else {
-              stop("Unknown minid status.")
-            }
+            get_newer(resolved, n)
           }
 )
 
@@ -76,10 +82,17 @@ setMethod("get_newer", "character",
 #' @import methods
 setMethod("get_title", "minid",
           function(minid, n = 1, server = NULL) {
-            if (status(minid) == "TOMBSTONE") {
-              message('This minid has status "TOMBSTONE"')
+            if (length(status(minid)) > 0) {
+              if (status(minid) == "TOMBSTONE") {
+                message('This minid has status "TOMBSTONE"')
+              }
             }
-            titles(minid)[[n]]$title
+
+            if ( length(titles(minid)) == 0){
+              return("")
+            } else {
+              return(titles(minid)[[n]]$title)
+            }
           }
 )
 
@@ -93,9 +106,6 @@ setMethod("get_title", "character",
               stop(msg)
             }
             resolved <- lookup(query = minid, server = server)
-            if (status(resolved) == "TOMBSTONE") {
-              message('This minid has status "TOMBSTONE"')
-            }
-            titles(resolved)[[n]]$title
+            get_title(resolved, n)
           }
 )

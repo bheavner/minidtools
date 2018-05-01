@@ -330,18 +330,16 @@ lookup <- function(query, server = "http://minid.bd2k.org/minid", algo = "md5"){
     status(new_minid) <- as.character(parsed$status)
   }
 
-
   # list items require a bit more processing...
   # build list of locations
   locations_list <- vector("list", length = length(parsed$locations))
 
-  for (index in seq(length(parsed$locations))) {
-    locations_list[[index]] <- list(
-      "created" = parsed$locations[[index]]$created,
-      "creator" = parsed$locations[[index]]$creator,
-      "link" = parsed$locations[[index]]$link,
-      "uri" = parsed$locations[[index]]$uri
-    )
+  for (index in seq_len(length(parsed$locations))) {
+      locations_list[[index]] <- list(
+        "created" = parsed$locations[[index]]$created,
+        "creator" = parsed$locations[[index]]$creator,
+        "link" = parsed$locations[[index]]$link,
+        "uri" = parsed$locations[[index]]$uri)
   }
   # assign to slot
   locations(new_minid) <- locations_list
@@ -349,7 +347,7 @@ lookup <- function(query, server = "http://minid.bd2k.org/minid", algo = "md5"){
   # build list of titles
   titles_list <- vector("list", length = length(parsed$titles))
 
-  for (index in seq(length(parsed$titles))) {
+  for (index in seq_len(length(parsed$titles))) {
     titles_list[[index]] <- list(
       "created" = parsed$titles[[index]]$created,
       "creator" = parsed$titles[[index]]$creator,
@@ -362,10 +360,10 @@ lookup <- function(query, server = "http://minid.bd2k.org/minid", algo = "md5"){
   # and an optional list
   if ("obsoleted_by" %in% names(parsed)) {
     if (length(parsed$obsoleted_by) == 0) {
-      obsoleted_by_list <- list(" ")
+      obsoleted_by_list <- list("")
       obsoleted_by(new_minid) <- obsoleted_by_list
     } else {
-      for (index in seq(length(parsed$obsoleted_by))) {
+      for (index in seq_len(length(parsed$obsoleted_by))) {
         obsoleted_by_list <- vector("list",
                                     length = length(parsed$obsoleted_by))
         obsoleted_by_list[[index]] <- parsed$obsoleted_by[[index]]
@@ -391,8 +389,6 @@ lookup <- function(query, server = "http://minid.bd2k.org/minid", algo = "md5"){
 #'
 #' @param config a configuration object with server, user and email slots
 #' filled (mandatory) along with the orcid slot (optional)
-#'
-#' @return An object of type "minid" or an error if the lookup fails
 #'
 #' @examples
 #' \dontrun{
