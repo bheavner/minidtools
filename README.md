@@ -81,7 +81,14 @@ mint(minid = "./someFile.RDa", config)
 ```
 
 ### Edit Minid ###
-* coming soon
+```
+update(id = "ark:/99999/fk4q53tj2m",
+       config = config,
+       new_title = "A Better Title!",
+       new_location="http://example.com/bar.txt",
+       new_status = "TOMBSTONE",
+       new_obsoleted_by = "ark:/99999/fk48s5xs8m")
+```
 
 ## Expanded Usage ##
 
@@ -308,7 +315,14 @@ minted <- mint(minid = minid_list, configuration = config_list, test = TRUE)
 ```
 
 ### Revising minids ###
-* coming soon
+```
+update(id = "ark:/99999/fk4q53tj2m",
+       config = config,
+       new_title = "A Better Title!",
+       new_location="http://example.com/bar.txt",
+       new_status = "TOMBSTONE",
+       new_obsoleted_by = "ark:/99999/fk48s5xs8m")
+```
 
 ## More information ##
 More information about the project can be found at: 
