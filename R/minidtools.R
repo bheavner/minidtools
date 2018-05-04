@@ -376,7 +376,153 @@ lookup <- function(query, server = "http://minid.bd2k.org/minid", algo = "md5"){
   new_minid
 }
 
+#' Update a minid
+#'
+#' Only locations, titles, locations, status, and obsoleted_by can be updated.
+#'
+#' NOTE: lookup currently supports minids of the form "ark:/57799/b9j69h" or
+#' "mind:b9j69h"
+#'
+#' @param id the identifier string of the minid to update (e.g.
+#'   "ark:/57799/b9j69h" or "minid:b9j69h")
+#'
+#' @param config a configuration object (see \code{confguration()})
+#'
+#' @param new_title the new title for the object (a string)
+#'
+#' @param new_location the new location for the object (a string)
+#'
+#' @param new_status minid status. May be "ACTIVE" or "TOMBSTONE"
+#'
+#' @param new_obsoleted_by the minid identifier to replace the obsolete minid
+#'
+#' @return An object of type "minid" or an error if the lookup fails
+#'
+#' @examples
+#' \dontrun{
+#'
+#' update(id = "ark:/99999/fk4q53tj2m",
+#'        config = config,
+#'        new_title = "A Better Title!",
+#'        new_location="http://example.com/bar.txt",
+#'        new_status = "TOMBSTONE",
+#'        new_obsoleted_by = "ark:/99999/fk48s5xs8m")
+#'
+#' }
+#'
+#' @export
 
+update <- function(id,
+                  config = config,
+                  new_title = "",
+                  new_location = "",
+                  new_status = "",
+                  new_obsoleted_by = ""){
+
+  # TODO make into try/catch
+  old_minid <- lookup(id, server = server(config))
+
+  # compare old values to new values and update if different
+
+  # if title is blank, keep old title
+  new_title <- ifelse(new_title == "",
+                      suppressMessages(get_title(old_minid)),
+                      new_title)
+
+  # if new title is in old title list, don't update
+  new_title <-
+    ifelse(any(purrr::map_lgl(titles(old_minid),
+                              function(x) x$title == new_title)),
+           suppressMessages(get_title(old_minid)),
+           new_title)
+
+  # if location is blank, keep old location
+  new_location <- ifelse(new_location == "",
+                         suppressMessages(get_location(old_minid)),
+                         new_location)
+
+  # if status is blank, keep old status
+  new_status <- ifelse(new_status == "",
+                       status(old_minid),
+                       new_status)
+
+  # if obsoleted_by is blank, use first old one
+  new_obsoleted_by <- ifelse(new_obsoleted_by == "",
+                             obsoleted_by(old_minid)[[1]],
+                             new_obsoleted_by)
+
+  # if new obsoleted_by is in old obsoleted_by list, don't update
+  new_obsoleted_by <- ifelse(
+    stringr::str_detect(unlist(obsoleted_by(old_minid)), new_obsoleted_by),
+    obsoleted_by(old_minid)[[1]],
+    new_obsoleted_by)
+
+  if (new_obsoleted_by != ""){
+    new_status = "TOMBSTONE"
+  }
+
+  # set URL
+  if (stringr::str_detect(id, "^minid:")) {
+    id <- stringr::str_replace(id, "^minid:", "ark:/57799/")
+    # set url for minid lookup
+    url <- paste0(server(config), "/", id)
+    # do id-based lookup for ark:
+  } else if (stringr::str_detect(id, "^ark:")) {
+    url <- paste0(server(config), "/", id)
+  }
+
+  # set body
+  body <-
+    list(checksum_function = checksum_function(old_minid),
+         email = email(config),
+         checksum = checksum(old_minid),
+         created = date(),
+         titles = list(list(title = new_title)),
+         code = code(config),
+         locations = list(list(uri = new_location)),
+         content_key = content_key(old_minid),
+         creator = creator(old_minid),
+         orcid = orcid(old_minid),
+         short_identifier = short_identifier(old_minid),
+         identifier = identifier(old_minid),
+         status = new_status,
+         obsoleted_by = new_obsoleted_by)
+
+    # set user agent
+  ua <- httr::user_agent("https://github.com/bheavner/minidtools")
+
+  # send request
+  resp <- httr::PUT(url,
+                    httr::add_headers(Accept = "application/json"),
+                    ua, body = body, encode = "json"
+                    )
+
+  # check for JSON response
+  if (httr::http_type(resp) != "application/json") {
+    stop("API did not return json", call. = FALSE)
+  }
+
+  # parse json
+  parsed <- jsonlite::fromJSON(httr::content(resp, "text", encoding = "UTF-8"),
+                               simplifyVector = FALSE)
+
+  # catch errors
+  if (httr::http_error(resp)) {
+    stop(
+      sprintf(
+        "BD2K minid API request failed [%s]\n%s\n<%s>",
+        httr::status_code(resp),
+        parsed$message,
+        parsed$documentation_url
+      ),
+      call. = FALSE
+    )
+  }
+
+  # return updated minid
+  lookup(parsed$identifier)
+
+}
 # user functions --------------------------
 
 #' Register a user

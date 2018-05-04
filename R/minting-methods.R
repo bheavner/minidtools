@@ -9,6 +9,8 @@ NULL
 setMethod("mint", signature = c("minid", "configuration"),
           function(minid, configuration, test) {
             url <- server(configuration)
+            location <-
+              ifelse(get_location(minid) == "", "none", get_location(minid))
             body <- list(
               test = stringr::str_to_title(as.character(test)),
               checksum_function = checksum_function(minid),
@@ -16,7 +18,7 @@ setMethod("mint", signature = c("minid", "configuration"),
               email = email(configuration),
               code = code(configuration),
               title = get_title(minid),
-              locations = list(get_location(minid))
+              locations = list(location)
             )
 
             # set user agent
@@ -48,7 +50,7 @@ setMethod("mint", signature = c("minid", "configuration"),
               )
             }
 
-            # look up and return new minid
+            # new minid
             lookup(parsed$identifier)
           })
 
@@ -57,6 +59,8 @@ setMethod("mint", signature = c("minid", "configuration"),
 setMethod("mint", signature = c("list", "list"),
           function(minid, configuration, test) {
             url <- server(configuration)
+            location <-
+              ifelse(minid$location == "", "none", minid$location)
             body <- list(
               test = stringr::str_to_title(as.character(test)),
               checksum_function = minid$checksum_function,
@@ -64,7 +68,7 @@ setMethod("mint", signature = c("list", "list"),
               email = configuration$email,
               code = configuration$code,
               title = minid$title,
-              locations = list(minid$location)
+              locations = list(location)
             )
 
             # set user agent
@@ -96,7 +100,7 @@ setMethod("mint", signature = c("list", "list"),
               )
             }
 
-            # look up and return new minid
+            # new minid
             lookup(parsed$identifier)
           })
 
@@ -105,6 +109,8 @@ setMethod("mint", signature = c("list", "list"),
 setMethod("mint", signature = c("minid", "list"),
           function(minid, configuration, test) {
             url <- server(configuration)
+            location <-
+              ifelse(get_location(minid) == "", "none", get_location(minid))
             body <- list(
               test = stringr::str_to_title(as.character(test)),
               checksum_function = checksum_function(minid),
@@ -112,7 +118,7 @@ setMethod("mint", signature = c("minid", "list"),
               email = configuration$email,
               code = configuration$code,
               title = get_title(minid),
-              locations = list(get_location(minid))
+              locations = list(location)
             )
 
             # set user agent
@@ -144,8 +150,9 @@ setMethod("mint", signature = c("minid", "list"),
               )
             }
 
-            # look up and return new minid
+            # new minid
             lookup(parsed$identifier)
+
           })
 
 #' @describeIn mint mint a new minid from a named list and configuration object
@@ -153,6 +160,8 @@ setMethod("mint", signature = c("minid", "list"),
 setMethod("mint", signature = c("list", "configuration"),
           function(minid, configuration, test) {
             url <- server(configuration)
+            location <-
+              ifelse(minid$location == "", "none", minid$location)
             body <- list(
               test = stringr::str_to_title(as.character(test)),
               checksum_function = minid$checksum_function,
@@ -160,7 +169,7 @@ setMethod("mint", signature = c("list", "configuration"),
               email = email(configuration),
               code = code(configuration),
               title = minid$title,
-              locations = list(minid$location)
+              locations = list(location)
             )
 
             # set user agent
@@ -192,8 +201,9 @@ setMethod("mint", signature = c("list", "configuration"),
               )
             }
 
-            # look up and return new minid
+            # new minid
             lookup(parsed$identifier)
+
           })
 
 
@@ -215,7 +225,7 @@ setMethod("mint", signature = c("character", "configuration"),
               email = email(configuration),
               code = code(configuration),
               title = basename(minid),
-              locations = list("")
+              locations = list(paste0("file:", minid))
             )
 
             # set user agent
@@ -247,6 +257,7 @@ setMethod("mint", signature = c("character", "configuration"),
               )
             }
 
-            # look up and return new minid
+            # new minid
             lookup(parsed$identifier)
+
           })
