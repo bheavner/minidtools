@@ -4,10 +4,12 @@
 \alias{created<-}
 \title{created}
 \usage{
-created(x) <- "created string"
+created(x) <- value
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new created string}
 }
 \value{
 The minid object with specified created string

@@ -4,10 +4,12 @@
 \alias{checksum<-}
 \title{checksum}
 \usage{
-checksum(x) <- "checksum string"
+checksum(x) <- value
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new checksum string}
 }
 \value{
 The minid object with specified checksum string

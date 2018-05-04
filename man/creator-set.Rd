@@ -4,10 +4,12 @@
 \alias{creator<-}
 \title{creator}
 \usage{
-creator(x) <- "creator string"
+creator(x) <- value
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new creator string}
 }
 \value{
 The minid object with specified creator string

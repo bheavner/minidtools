@@ -4,10 +4,12 @@
 \alias{content_key<-}
 \title{content_key}
 \usage{
-content_key(x) <- "content_key string"
+content_key(x) <- value
 }
 \arguments{
 \item{x}{minid object}
+
+\item{value}{the new content_key string}
 }
 \value{
 The minid object with specified content_key

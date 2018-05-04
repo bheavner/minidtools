@@ -1,23 +1,34 @@
 Package: minidtools
 Title: Working with the BD2K Minimal Viable Identifier
-Version: 0.0.0.9001
+Version: 1.0.0
 Authors@R: person("Ben", "Heavner", email = "bheavner@uw.edu", role = c("aut", "cre"))
 Description: The minidtools package facilitates working with globally unique digital object identifiers within R. It is intended to support minting new identifiers, retrieving metadata about a file or identifier, or updating metadata about an identifier.
-Depends: R (>= 3.4.2)
+Depends: R (>= 3.4.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
 Suggests: testthat,
     covr
-Imports: methods
+Imports:
+    configr,
+    digest,
+    httr,
+    jsonlite,
+    methods,
+    purrr,
+    readr,
+    stats,
+    stringr
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
     'AllConstructors.R'
     'coercion-methods.R'
-    'minid-getter-methods.R'
-    'minid-setter-methods.R'
+    'getter-methods.R'
+    'list-resolution-methods.R'
     'minidtools.R'
+    'minting-methods.R'
+    'setter-methods.R'
     'show-methods.R'
     'validity-methods.R'
