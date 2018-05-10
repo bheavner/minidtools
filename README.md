@@ -31,30 +31,14 @@ devtools::install_github("bheavner/minidtools")
 
 ## Quick Usage ##
 ### Resolve Minid ###
-* Get location of digital object from a minid
-```
-get_location("minid:b94t3q")
-```
-
-* Get title of digital object from minid
-```
-get_title("ark:/57799/b9j69h")
-```
-
-* Get newer minid for minids that have `status = TOMBSTONED`
-```
-get_newer("minid:b94t3q")
-```
-
 * Get all metadata for minid
 ```
 lookup("minid:b94t3q")
 ```
 
-* get minid for file that has an identifier (e.g. a file you've downloaded after
- resolving a minid)
+* Or just get location of digital object from a minid
 ```
-lookup("file:./somefile.RDa", algo = "sha256")
+get_location("minid:b94t3q")
 ```
 
 ### Register User ###
@@ -93,6 +77,23 @@ update(id = "ark:/99999/fk4q53tj2m",
 ## Expanded Usage ##
 
 ### Resolution and lookup functions ###
+
+* Get title of digital object from minid
+```
+get_title("ark:/57799/b9j69h")
+```
+
+* Get newer minid for minids that have `status = TOMBSTONE`
+```
+get_newer("minid:b94t3q")
+```
+
+* get minid for file that has an identifier (e.g. a file you've downloaded after
+ resolving a minid)
+```
+lookup("file:./somefile.RDa", algo = "sha256")
+```
+
 * Retrieve all metadata for a minid or local file that has been registered
 ```
 my_minid <- lookup(query = "ark:/57799/b9j69h", 
