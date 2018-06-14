@@ -16,7 +16,9 @@ setMethod("get_location", "minid",
 
             if ( length(locations(minid)) == 0){
               return("")
-            } else {
+            } else if (length(locations(minid)) == 1){
+              return(locations(minid)$link)
+              } else {
               return(locations(minid)[[n]]$link)
             }
           }
@@ -90,7 +92,9 @@ setMethod("get_title", "minid",
 
             if ( length(titles(minid)) == 0){
               return("")
-            } else {
+            } else if (length(titles(minid)) == 1) {
+              return(titles(minid)$title)
+            }else {
               return(titles(minid)[[n]]$title)
             }
           }

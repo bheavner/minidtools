@@ -11,20 +11,33 @@ setMethod("mint", signature = c("minid", "configuration"),
             url <- server(configuration)
             location <-
               ifelse(get_location(minid) == "", "none", get_location(minid))
-            body <- list(
-              test = stringr::str_to_title(as.character(test)),
-              checksum_function = checksum_function(minid),
-              checksum = checksum(minid),
-              email = email(configuration),
-              code = code(configuration),
-              title = get_title(minid),
-              locations = list(location)
-            )
+            body <- list()
+            if (test){
+              body <-
+                append(
+                  body,
+                  list(test = stringr::str_to_title(as.character(test)))
+                  )
+            }
+            body <-
+              append(
+                body,
+                list(
+                  checksum_function = checksum_function(minid),
+                  checksum = checksum(minid),
+                  email = email(configuration),
+                  code = code(configuration),
+                  title = get_title(minid),
+                  locations = list(location)
+                )
+              )
 
             # set user agent
             ua <- httr::user_agent("https://github.com/bheavner/minidtools")
 
-            # send request
+            browser()
+
+            # send request - use htttr::with_verbose() to debug
             resp <- httr::POST(url, body = body, ua, encode = "json")
 
             # check for JSON response
