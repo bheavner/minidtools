@@ -35,8 +35,6 @@ setMethod("mint", signature = c("minid", "configuration"),
             # set user agent
             ua <- httr::user_agent("https://github.com/bheavner/minidtools")
 
-            browser()
-
             # send request - use htttr::with_verbose() to debug
             resp <- httr::POST(url, body = body, ua, encode = "json")
 
