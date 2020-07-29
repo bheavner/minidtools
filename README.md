@@ -1,3 +1,5 @@
+# NOTE: lots of development has happened with minids. This package and repo is likely obsolete
+
 | **Service** | **Master** | **Develop** |
 |:-------------:|:------:|:-------:|
 | CI Status | [![Travis-CI Build Status](https://travis-ci.org/bheavner/minidtools.svg?branch=master)](https://travis-ci.org/bheavner/minidtools) | [![Travis-CI Build Status](https://travis-ci.org/bheavner/minidtools.svg?branch=develop)](https://travis-ci.org/bheavner/minidtools) |
